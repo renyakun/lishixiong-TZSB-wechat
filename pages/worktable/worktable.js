@@ -1,4 +1,7 @@
 // pages/worktable/worktable.js
+const {
+  url
+} = require('../../utils/url.js');
 Page({
 
   /**
@@ -8,6 +11,17 @@ Page({
 
   },
 
+
+
+  // 获取待审核,待审批数量
+  getReportNum(){
+    wx.request({
+      url: url + '/report/getTodayNotify',
+      data: {
+        
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

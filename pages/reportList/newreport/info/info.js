@@ -1,6 +1,18 @@
 // pages/reportList/newreport/info/info.js
+const {url} = require("../../../../utils/url.js");
+
 Page({
 
+
+  // 请求当前报告详情
+  // getReportDetail(){
+  //   wx.request({
+  //     url: url + '/report/getReportDetail',
+  //     data:{},
+  //     type: "GET",
+  //     reportNo:,
+  //   })
+  // },
   /**
    * 页面的初始数据
    */
@@ -12,7 +24,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // let reportNo = option.
+    // 获取对应编号
+    // getReportDetail()
   },
 
   /**

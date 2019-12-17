@@ -11,10 +11,16 @@
 
       </view>
       <view class="cu-bar bgwhite border-botom ">
-        <view class="action">
+        <view class="action flex flex-direction">
           <text class="text-xl text-bold">扇形图</text>
-          <view>
+          <!-- <view>
             <image src="../../images/arc.png"></image>
+          </view> -->
+          <view>
+          待审核报告:{{reportList.checkNum}}份
+          </view>
+          <view>
+          待审批报告:{{reportList.proveNum}}份
           </view>
         </view>
 
@@ -39,7 +45,6 @@
     <view wx:if="{{TabCur==0}}">
       <view class="cu-list menu-avatar">
         <view class="cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{4}}" wx:key="id" bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}">
-          <view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big2100{{index+1}}.jpg);"></view>
           <view class="content">
             <view class="text-grey">文晓港</view>
             <view class="text-gray text-sm">
@@ -61,9 +66,8 @@
     <view wx:else>
       <view class="cu-list menu-avatar">
         <view class="cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{4}}" wx:key="id" bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}">
-          <view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big2100{{index+1}}.jpg);"></view>
           <view class="content">
-            <view class="text-grey">文晓港</view>
+            <view class="text-grey">编号</view>
             <view class="text-gray text-sm">
               <text class="cuIcon-infofill text-red"></text> 消息未送达</view>
           </view>

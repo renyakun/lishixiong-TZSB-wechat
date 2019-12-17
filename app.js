@@ -1,4 +1,6 @@
 //app.js
+
+
 App({
   onLaunch: function () {
     wx.getSystemInfo({
@@ -30,6 +32,7 @@ App({
   },
 
   globalData: {
-    userInfo: null
+    userInfo: null,
+    cookie:''
   }
 })
