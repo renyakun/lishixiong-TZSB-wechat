@@ -1,0 +1,21 @@
+<!--pages/login/login.wxml-->
+<view class="login flex flex-direction">
+  <view class="title flex justify-center align-center text-xl">
+    账号登录
+  </view>
+  <view class="body">
+    <form >
+      <view class="cu-form-group margin-top">
+        <view class="title">账号</view>
+        <input type="text" bindinput="getUserName" value="" placeholder="请输入账号"></input>
+      </view>
+      <view class="cu-form-group margin-top">
+        <view class="title">密码</view>
+        <input type="password" bindinput="getPassword" value="" placeholder="请输入密码"></input>
+      </view>
+    </form>
+    <view class="padding flex flex-direction">
+      <button class="cu-btn bg-red margin-tb-sm lg" bindtap="login" style="width:100%">登录</button>
+    </view>
+  </view>
+</view>

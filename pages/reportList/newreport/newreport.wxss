@@ -1,0 +1,13 @@
+/* pages/reportList/newreport/newreport.wxss */
+.arrow {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 0;
+  top: 100rpx;
+}
+
+
+.cu-bar .action {
+  justify-content: space-between;
+}

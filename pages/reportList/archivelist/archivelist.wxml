@@ -1,0 +1,7 @@
+<!--pages/reportList/archivelist/archivelist.wxml-->
+<!-- 归档报告列表 -->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+<view slot="backText">返回</view>
+  <view slot="content">报告管理</view>
+</cu-custom>
+<view>归档报告</view>

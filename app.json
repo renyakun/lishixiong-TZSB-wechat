@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/worktable/worktable",
+    "pages/search/search",
+    "pages/report/report",
+    "pages/reportList/approvelist/approvelist",
+    "pages/reportList/archivelist/archivelist",
+    "pages/reportList/checklist/checklist",
+    "pages/reportList/newreport/newreport",
+    "pages/reportList/newreport/info/info"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#39b54a",
+    "navigationBarTitleText": "特种设备后台管理系统",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "tabBar": {
+    "color": "#2c2c2c",
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/tabbar/table.png",
+        "selectedIconPath": "images/tabbar/table_cur.png",
+        "text": "工作台"
+      },
+      {
+        "pagePath": "pages/report/report",
+        "iconPath": "images/tabbar/report.png",
+        "selectedIconPath": "images/tabbar/report_cur.png",
+        "text": "报告管理"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "iconPath": "images/tabbar/search.png",
+        "selectedIconPath": "images/tabbar/search_cur.png",
+        "text": "搜索报告"
+      }
+    ]
+  },
+  "style": "v2",
+  "debug": true,
+  "navigateToMiniProgramAppIdList": [
+    "wxb4a016efe2b335d6"
+  ],
+  "sitemapLocation": "sitemap.json",
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  }
+}

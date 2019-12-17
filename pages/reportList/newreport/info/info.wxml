@@ -1,0 +1,9 @@
+<!--pages/reportList/newreport/info/info.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">报告详情</view>
+</cu-custom>
+
+<view class="reportInfo">
+  报告详情
+</view>

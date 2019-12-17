@@ -1,0 +1,2 @@
+<!--pages/search/search.wxml-->
+<cu-custom bgColor="bg-gradual-blue"><view slot="content">报告搜索</view></cu-custom>
