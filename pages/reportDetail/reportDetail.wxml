@@ -1,0 +1,55 @@
+<!--pages/reportDetail/reportDetail.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">发起审批</view>
+</cu-custom>
+
+<view class="scrollPage" style="position:relative;height:100%">
+  <!-- <view class="img-wrap">
+    <image src='/images/beijing1.jpg' mode='widthFix' class='png' style='width:100%;height:200rpx'></image>
+  </view> -->
+  <view class='nav-list'>
+    <view class="cu-card article" style="width:100%">
+      <view class="cu-item shadow">
+        <view class="title">
+          <view class="text-cut">报告详情</view>
+        </view>
+        <view class="content">
+          <view class="item margin padding-top">
+            <view class="item-wrap"> 报告编号:{{}}</view>
+            <view class="item-wrap"> 使用单位:{{}}</view>
+            <view class="item-wrap"> 单位地址:{{}}</view>
+            <view class="item-wrap"> 联系人:{{}}</view>
+            <view class="item-wrap"> 联系电话:{{}}</view>
+          </view>
+          <view class="item margin padding-top">
+            <view class="item-wrap"> 设备代码:{{}}</view>
+            <view class="item-wrap"> 安装位置:{{}}</view>
+            <view class="item-wrap"> 安全阀类型:{{}}</view>
+            <view class="item-wrap"> 安全阀型号:{{}}</view>
+            <view class="item-wrap"> 工作压力:{{}}</view>
+            <view class="item-wrap"> 工作介质:{{}}</view>
+            <view class="item-wrap"> 要求整定压力:{{}}</view>
+            <view class="item-wrap"> 执行标准:{{}}</view>
+            <view class="item-wrap"> 检验方式:{{}}</view>
+            <view class="item-wrap"> 检验介质:{{}}</view>
+            <view class="item-wrap"> 整定压力:{{}}</view>
+            <view class="item-wrap"> 密封试验压力:{{}}</view>
+            <view class="item-wrap"> 检验结果:{{}}</view>
+          </view>
+          <view class="item margin padding-top">
+            <view class="item-wrap"> 备注:{{}}</view>
+            <view class="item-wrap"> 维护检修情况说明:{{}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view>流程图</view>
+
+  <view class="btn-wrap flex justify-between" style="width:100%">
+    <button class="cu-btn   shadow " style="width:60%">通过</button>
+    <button class="cu-btn   shadow " style="width:30%">驳回</button>
+  </view>
+
+</view>

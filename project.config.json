@@ -81,6 +81,21 @@
 					"id": -1,
 					"name": "新建报告列表",
 					"pathName": "pages/reportList/newreport/newreport",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/demo/demo",
+					"pathName": "pages/demo/demo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/reportDetail/reportDetail",
+					"pathName": "pages/reportDetail/reportDetail",
+					"query": "reportNo= FD/L-2019-000051",
 					"scene": null
 				}
 			]

@@ -18,7 +18,7 @@
 
 .scrollPage {
   min-height: 100vh;
-  background: #e7e2e2;
+  background: #EEEEEE;
 }
 
 .nav-list {

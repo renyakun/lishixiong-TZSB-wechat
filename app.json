@@ -9,7 +9,9 @@
     "pages/reportList/archivelist/archivelist",
     "pages/reportList/checklist/checklist",
     "pages/reportList/newreport/newreport",
-    "pages/reportList/newreport/info/info"
+    "pages/reportList/newreport/info/info",
+    "pages/demo/demo",
+    "pages/reportDetail/reportDetail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#39b54a",

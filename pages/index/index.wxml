@@ -1,31 +1,32 @@
 <view>
-<cu-custom bgColor="bg-gradual-blue" ><view slot="content">工作台</view></cu-custom>
+  <cu-custom bgColor="bg-gradual-blue">
+    <view slot="content">工作台</view>
+  </cu-custom>
   <view class="scrollPage">
 
-    <view class="cu-card article no-card margin-top cardpost bgwhite">
+    <view class="cu-card article no-card  cardpost bgwhite">
       <view class="cu-bar bgwhite border-botom ">
         <view class="action">
           <text class="cuIcon-titles text-blue" style="color:#0081ff"></text>
           <text class="text-xl text-bold">今日报告记录</text>
         </view>
-
       </view>
-      <view class="cu-bar bgwhite border-botom ">
-        <view class="action flex flex-direction">
-          <text class="text-xl text-bold">扇形图</text>
+      <view class="cu-bar bgwhite border-botom padding-bottom">
+        <view class="action flex flex-direction" style="width:100%">
           <!-- <view>
             <image src="../../images/arc.png"></image>
           </view> -->
-          <view>
-          待审核报告:{{reportList.checkNum}}份
+          <view class="canvans-wrap">
+            <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
           </view>
           <view>
-          待审批报告:{{reportList.proveNum}}份
+            待审核报告:{{reportList.checkNum}}份
+          </view>
+          <view>
+            待审批报告:{{reportList.proveNum}}份
           </view>
         </view>
-
       </view>
-
     </view>
 
 
@@ -44,40 +45,48 @@
     <!-- 待审核列表 -->
     <view wx:if="{{TabCur==0}}">
       <view class="cu-list menu-avatar">
-        <view class="cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{4}}" wx:key="id" bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}">
-          <view class="content">
-            <view class="text-grey">文晓港</view>
-            <view class="text-gray text-sm">
-              <text class="cuIcon-infofill text-red"></text> 消息未送达</view>
+        <view class="solid-left radius shadow margin cu-item" wx:for="{{checkList}}" wx:key="id" style="border-top:1rpx solid #ccc" bindtap="toReportInfo" data-reportNo="{{item.reportNo}}">
+          <view class="content flex flex-direction justify-around" style="padding:30rpx">
+            <view class="text-black text-df">
+              <text class="cuIcon-time text-red"></text>
+              <text class="margin-left">{{item.createTime}}</text>
+            </view>
+            <view class="text-black text-df">
+              <text class="cuIcon-form text-red"></text>
+              <text class="margin-left"> {{item.reportNo}}</text>
+            </view>
           </view>
-          <view class="action">
-            <view class="text-grey text-xs">22:20</view>
-            <view class="cu-tag round bg-grey sm">5</view>
-          </view>
-          <view class="move">
-            <view class="bg-grey">置顶</view>
-            <view class="bg-red">删除</view>
+          <view class="action flex flex-direction">
+            <view class="text-blue text-sm ">待审核
+              <text class="cuIcon-title text-blue"></text>
+            </view>
+            <view class="text-black text-sm ">提交人:{{item.preUser}}</view>
+            <!-- <view class="cu-tag round bg-grey sm">5</view> -->
           </view>
         </view>
       </view>
     </view>
 
-    <!-- 待审批列表 -->
+    <!-- 待审批列表  ApproveList-->
     <view wx:else>
       <view class="cu-list menu-avatar">
-        <view class="cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" wx:for="{{4}}" wx:key="id" bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd" data-target="move-box-{{index}}">
-          <view class="content">
-            <view class="text-grey">编号</view>
-            <view class="text-gray text-sm">
-              <text class="cuIcon-infofill text-red"></text> 消息未送达</view>
+        <view class="solid-left radius shadow margin cu-item" wx:for="{{ApproveList}}" wx:key="id" style="border-top:1rpx solid #ccc">
+          <view class="content flex flex-direction justify-around" style="padding:30rpx">
+            <view class="text-black text-df">
+              <text class="cuIcon-time text-red"></text>
+              <text class="margin-left">{{item.createTime}}</text>
+            </view>
+            <view class="text-black text-df">
+              <text class="cuIcon-form text-red"></text>
+              <text class="margin-left"> {{item.reportNo}}</text>
+            </view>
           </view>
-          <view class="action">
-            <view class="text-grey text-xs">22:20</view>
-            <view class="cu-tag round bg-grey sm">5</view>
-          </view>
-          <view class="move">
-            <view class="bg-grey">置顶</view>
-            <view class="bg-red">删除</view>
+          <view class="action flex flex-direction" style="">
+            <view class="text-blue text-sm ">待审核
+              <text class="cuIcon-title text-blue"></text>
+            </view>
+            <view class="text-black text-sm ">提交人:{{item.preUser}}</view>
+            <!-- <view class="cu-tag round bg-grey sm">5</view> -->
           </view>
         </view>
       </view>

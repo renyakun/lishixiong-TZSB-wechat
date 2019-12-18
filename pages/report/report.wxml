@@ -8,7 +8,7 @@
 <view class="report">
   <view class="scrollPage">
     <!-- 今日报告记录区域  -->
-    <view class="cu-card article no-card margin-top cardpost bgwhite">
+    <view class="cu-card article no-card cardpost bgwhite">
       <!-- 标题 -->
       <view class="cu-bar bgwhite border-botom ">
         <view class="action">

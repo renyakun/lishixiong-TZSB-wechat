@@ -1,0 +1,12 @@
+/* pages/demo/demo.wxss */
+/**index.wxss**/
+
+.main{
+  height: 50vh;
+  width: 100%;
+}
+
+ec-canvas {
+  width: 50%;
+  height: 50%;
+}
