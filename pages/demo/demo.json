@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "ec-canvas": "../../my-component/ec-canvas/ec-canvas"
+    "ec-canvas": "../../my-component/ec-canvas/ec-canvas",
+    "input-modal":"../../my-component/input-modal/input-modal"
   }
 }

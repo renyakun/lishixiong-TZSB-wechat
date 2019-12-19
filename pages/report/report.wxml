@@ -19,23 +19,23 @@
       <!-- 内容区 -->
       <view class="cu-bar bgwhite border-botom padding-bottom">
         <view class="action flex flex-direction justify-center" style="width:100%;height:100%">
-          <view class="" style="width:300rpx;height:300rpx">
-            <image src="../../images/arc.png" mode style="width:100%;height:100%"></image>
+          <view class="canvans-wrap">
+            <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
           </view>
           <view class="total-wrap margin-top">
             <view class="text-lg">
                今日新建报告数:
-              <text class="text-lg margin-left text-bold" style="font-style:italic"> 0份</text>
+              <text class="text-lg margin-left text-bold" style="font-style:italic"> {{todayReportList.newReportNum}}份</text>
             </view>
             <view class="text-lg">
               今日审核报告数:
-              <text class="text-lg margin-left text-bold" style="font-style:italic"> 0份</text>
+              <text class="text-lg margin-left text-bold" style="font-style:italic"> {{todayReportList.checkReportNum}}份</text>
             </view>
             <view class="text-lg">今日审批报告数:
-              <text class="text-lg margin-left text-bold" style="font-style:italic"> 0份</text>
+              <text class="text-lg margin-left text-bold" style="font-style:italic"> {{todayReportList.aprroveReportNum}}份</text>
             </view>
             <view class="text-lg">今日归档报告数:
-              <text class="text-lg margin-left text-bold" style="font-style:italic"> 0份</text>
+              <text class="text-lg margin-left text-bold" style="font-style:italic"> {{todayReportList.fileReportNum}}份</text>
             </view>
           </view>
         </view>

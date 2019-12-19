@@ -1,0 +1,35 @@
+<!-- 自定义模态弹出框 -->
+<block wx:if="{{showModal}}">
+  <view class="modal-mask" catchtouchmove="preventTouchMove"></view>
+  <view class="modal-dialog" catchtouchmove="preventTouchMove">
+    <view class='m-title'>
+      {{title}}
+    </view>
+    <view class="m-info">
+      <!-- 头像  -->
+      <block wx:if="{{imgUrl}}">
+        <image src='{{imgUrl}}' class='m-i-img'></image>
+      </block>
+      <!-- 内容 -->
+      <text>
+        <input type="text" placeholder="请输入驳回理由"></input> 
+      </text>
+      <!-- 插槽 -->
+      <slot name="content">
+        <!-- <block wx:if="{{isInput}}" class="">
+          <input class="input-wrap" type="text"></input>
+        </block> -->
+      </slot>
+    </view>
+
+    <!-- 底部按钮 -->
+    <view class="modal-footer">
+      <view class="btn-footer btn-l-footer" bindtap="_onCancel">
+        <text>{{cancelText}}</text>
+      </view>
+      <view class="btn-footer btn-r-footer" bindtap="_onConfirm">
+        <text>{{confirmText}}</text>
+      </view>
+    </view>
+  </view>
+</block>

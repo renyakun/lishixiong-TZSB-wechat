@@ -65,8 +65,15 @@ Page({
     ec: {
     }
   },
+  
+  showmodal(){
+    this.inputmodal.show()
+  },
 
   onReady() {
+    // 获取组件的实例
+    this.inputmodal = this.selectComponent('#popup');
+
   },
 
   echartInit(e) {

@@ -28,6 +28,7 @@ function fiflet(arr, value) {
 };
 
 //显示模态对话框
+//显示模态对话框
 function showModal(msg, name, title) {
   wx.showModal({
     title: '提示',
@@ -37,10 +38,26 @@ function showModal(msg, name, title) {
         wx.navigateTo({
           url: '/pages/classify/' + name + '/' + name + '?title=' + title,
         })
-      } else if (res.cancel) {}
+      } else if (res.cancel) { }
     }
   })
 };
+
+// 确认审核审批对话框
+function checkModel(title,msg,success,cancel) {
+  wx.showModal({
+    title: title,
+    content: msg,
+    success(res) {
+      if (res.confirm) {
+        success()
+      } else if (res.cancel) { 
+        cancel()
+      }
+    }
+  })
+};
+
 
 //显示 loading 提示框
 function showLoading() {
@@ -239,7 +256,8 @@ export {
   showBarLoading,
   setBarColor,
   setBarTitle,
-  wxRequest
+  wxRequest,
+  checkModel
 };
 
 

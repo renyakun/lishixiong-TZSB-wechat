@@ -142,10 +142,11 @@ Page({
   toReportInfo(e) {
     console.log(e);
     let reportNo = e.currentTarget.dataset.reportno;
+    let flag = e.currentTarget.dataset.flag;
     console.log(reportNo);
     setTimeout(() => {
       wx.navigateTo({
-        url: '/pages/reportDetail/reportDetail?reportNo=' + reportNo,
+        url: '/pages/reportDetail/reportDetail?reportNo=' + reportNo + '&flag=' + flag,
       })
     }, 1000)
 

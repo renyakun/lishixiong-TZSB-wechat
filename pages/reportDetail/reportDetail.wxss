@@ -38,3 +38,18 @@
   color: #fff;
 }
 
+.text-normal{
+  font-weight:normal;
+  margin-left: 10rpx;
+  color: 	#7D7D7D;
+}
+
+
+.input-wrap{
+  width: 100%;
+  /* border:1rpx solid #ccc; */
+}
+.reson{
+  height: 100rpx;
+}
+
