@@ -7,15 +7,15 @@
 
 <view class="newreportLis">
 
-  <block wx:for="{{5}}">
+  <block wx:for="{{newReportList}}" wx:key="reportNo">
     <view class="margin-xs cu-card radius">
       <!-- title -->
       <view class="cu-bar bg-white solid-bottom">
         <view class='action flex justify-between' style="width:100%">
           <view>
-            <text class="text-lg text-bold text-black">报告编号:124</text>
+            <text class="text-lg text-bold text-black">报告编号:{{item.reportNo}}</text>
           </view>
-          <view wx:if="{{isSubmit}}">
+          <view wx:if="{{item.modifyFlag!=0}}">
             <text class="cu-tag radius bg-green">已提交</text>
           </view>
           <view wx:else>
@@ -24,17 +24,17 @@
         </view>
       </view>
       <!-- content -->
-      <view class="cu-card case no-card" style="padding:0 30rpx;background-color:white;" bindtap="newReportInfo">
+      <view class="cu-card case no-card" style="padding:0 30rpx;background-color:white;" bindtap="" >
         <view class="cu-item shadow">
           <view class="cu-list">
             <view class="cu-item text-df text-bold" style="border-top: 1rpx solid #eee;positon:relative">
               <view class="margin">
-                <text class="cuIcon-profile text-blue"></text> 创建人: </view>
+                <text class="cuIcon-profile text-blue"></text> 创建人: {{item.createName}}</view>
               <view class="margin">
-                <text class="cuIcon-time text-blue"></text> 创建时间: </view>
+                <text class="cuIcon-time text-blue"></text> 创建时间: {{item.createTime}}</view>
               <view  class="margin text-sm text-center flex " style="flex-direction:row-reverse" bindtap="">
-                <text wx:if="{{!isSubmit}}" style="width:120rpx;height:50rpx;line-height:50rpx;border-radius:50rpx;border:1rpx solid #ccc" catchtap="commit">提交审核</text>
-              <text  class="margin-right" style="width:120rpx;height:50rpx;line-height:50rpx;border-radius:50rpx;border:1rpx solid #ccc" catchtap="newReportInfo">查看报告</text>
+                <text wx:if="{{!isSubmit}}" style="width:120rpx;height:50rpx;line-height:50rpx;border-radius:50rpx;border:1rpx solid #ccc" catchtap="newReportInfo" wx:if="{{item.modifyFlag==0}}" data-flag="{{item.modifyFlag}}" data-reportno="{{item.reportNo}}">提交审核</text>
+              <!-- <text  class="margin-right" style="width:120rpx;height:50rpx;line-height:50rpx;border-radius:50rpx;border:1rpx solid #ccc" catchtap="newReportInfo" data-flag="{{item.modifyFlag}}" data-reportno="{{item.reportNo}}">查看报告</text> -->
               </view>
               <text class="arrow text-xl cuIcon-right"></text>
             </view>

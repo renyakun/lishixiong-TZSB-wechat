@@ -4,7 +4,9 @@ const {
 } = require('../../../utils/url.js');
 
 import {
-  showToast
+  showToast,
+  navigateTo,
+  wxRequest
 } from "../../../utils/WeChatfction.js"
 
 Page({
@@ -13,8 +15,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isSubmit: false
+    isSubmit: false,
+    newReportList:[]
   },
+
+  // 新建报告列表
+  getNewReportList(){
+    let cookie = getApp().globalData.cookie;
+    wxRequest('GET', url + '/report/getNewReportList', {}, cookie, (res) => {
+      console.log(res.data.data)
+      if (res.data.ok) {
+        console.log("获取数据成功")
+        this.setData({
+          newReportList: [...res.data.data.list, ...this.data.newReportList]
+        })
+      }
+    }, (err) => {
+      console.log(err)
+    })
+  },
+
   // 提交审核
   commit() {
     // wx.request({
@@ -51,9 +71,13 @@ Page({
   },
 
   // 查看报告详情
-  newReportInfo() {
+  newReportInfo(e) {
+    let flag = e.currentTarget.dataset.flag;
+    let reportNo = e.currentTarget.dataset.reportno;   //自定义属性名字只能小写
+    // console.log(e.currentTarget.dataset.flag);
+    // console.log(e.currentTarget.dataset.reportno);
     wx.navigateTo({
-      url: '/pages/reportList/newreport/info/info',
+      url: '/pages/reportList/newreport/info/info?flag=' + flag + '&reportNo=' + reportNo,
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
@@ -63,7 +87,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.getNewReportList();
   },
 
   /**

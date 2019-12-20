@@ -97,6 +97,19 @@
 					"pathName": "pages/reportDetail/reportDetail",
 					"query": "reportNo= FD/L-2019-000051",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的新建报告提交审核详情页",
+					"pathName": "pages/reportList/newreport/info/info",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "审核报告列表",
+					"pathName": "pages/reportList/checklist/checklist",
+					"scene": null
 				}
 			]
 		}

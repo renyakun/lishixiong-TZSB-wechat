@@ -2,6 +2,45 @@
 <!-- 审核报告列表 -->
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
   <view slot="backText">返回</view>
-  <view slot="content">报告管理</view>
+  <view slot="content">审核报告列表</view>
 </cu-custom>
-<view>审核报告</view>
+
+<view class="checkedReportList">
+
+  <block wx:for="{{checkedReportList}}" wx:key="reportNo">
+    <view class="margin-xs cu-card radius">
+      <!-- title -->
+      <view class="cu-bar bg-white solid-bottom">
+        <view class='action flex justify-between' style="width:100%">
+          <view>
+            <text class="text-lg text-bold text-black">报告编号:{{item.reportNo}}</text>
+          </view>
+          <view wx:if="{{item.modifyFlag==2}}">
+            <text class="cu-tag radius bg-green">审核通过</text>
+          </view>
+          <view wx:if="{{item.modifyFlag==12}}">
+            <text class="cu-tag radius bg-red">审核不通过</text>
+          </view>
+        </view>
+      </view>
+      <!-- content -->
+      <view class="cu-card case no-card" style="padding:0 30rpx;background-color:white;" bindtap="">
+        <view class="cu-item shadow">
+          <view class="cu-list">
+            <view class="cu-item text-df text-bold" style="border-top: 1rpx solid #eee;positon:relative">
+              <view class="margin">
+                <text class="cuIcon-profile text-blue"></text> 创建人: {{item.createName}}</view>
+              <view class="margin">
+                <text class="cuIcon-time text-blue"></text> 创建时间: {{item.createTime}}</view>
+              <view class="margin text-sm text-center flex " style="flex-direction:row-reverse" bindtap="">
+                <text class="my-btn" style="" catchtap="newReportInfo" wx:if="{{item.modifyFlag==2}}" data-flag="{{item.modifyFlag}}" data-reportno="{{item.reportNo}}">提交审批</text>
+                <text class="my-btn" style="" catchtap="newReportInfo" wx:if="{{item.modifyFlag==12}}" data-flag="{{item.modifyFlag}}" data-reportno="{{item.reportNo}}">修改报告</text>
+              </view>
+              <text class="arrow text-xl cuIcon-right"></text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

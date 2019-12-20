@@ -20,10 +20,14 @@
             <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
           </view>
           <view>
-            待审核报告:{{reportList.checkNum}}份
+            <text>待审核报告:</text>
+            <text class="text-blue">{{reportList.checkNum}}</text>
+            <text>份</text>
           </view>
           <view>
-            待审批报告:{{reportList.proveNum}}份
+            <text>待审批报告:</text>
+            <text class="text-blue">{{reportList.proveNum}}</text>
+            <text>份</text>
           </view>
         </view>
       </view>
@@ -82,7 +86,7 @@
             </view>
           </view>
           <view class="action flex flex-direction" style="">
-            <view class="text-blue text-sm ">待审核
+            <view class="text-blue text-sm ">待审批
               <text class="cuIcon-title text-blue"></text>
             </view>
             <view class="text-black text-sm ">提交人:{{item.preUser}}</view>

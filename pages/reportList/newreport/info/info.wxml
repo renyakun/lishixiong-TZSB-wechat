@@ -1,9 +1,140 @@
 <!--pages/reportList/newreport/info/info.wxml-->
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
   <view slot="backText">返回</view>
-  <view slot="content">报告详情</view>
+  <view slot="content">我的报告</view>
 </cu-custom>
 
-<view class="reportInfo">
-  报告详情
+<view class="scrollPage" style="position:relative;height:100%">
+  <view class='nav-list'>
+    <view class="cu-card article" style="width:100%">
+      <view class="cu-item shadow">
+        <view class="title">
+          <view class="text-cut">报告详情</view>
+        </view>
+        <view class="content">
+          <view class="item margin padding-top">
+            <view class="item-wrap"> 报告编号:
+              <text class="text-normal">{{reportDetail.reportNo}}</text>
+            </view>
+            <view class="item-wrap"> 使用单位:
+              <text class="text-normal">{{reportDetail.companyUse}}</text>
+            </view>
+            <view class="item-wrap"> 单位地址:
+              <text class="text-normal">{{reportDetail.companyAddress}}</text>
+            </view>
+            <view class="item-wrap"> 联系人:
+              <text class="text-normal">{{reportDetail.companyContacts}}</text>
+            </view>
+            <view class="item-wrap"> 联系电话:
+              <text class="text-normal">{{reportDetail.telephone}}</text>
+            </view>
+          </view>
+          <view class="item margin padding-top">
+            <view class="item-wrap"> 设备代码:
+              <text class="text-normal">{{reportDetail.deviceNo}}</text>
+            </view>
+            <view class="item-wrap"> 安装位置:
+              <text class="text-normal">{{reportDetail.installLocation}}</text>
+            </view>
+            <view class="item-wrap"> 安全阀类型:
+              <text class="text-normal">{{reportDetail.valveType}}</text>
+            </view>
+            <view class="item-wrap"> 安全阀型号:
+              <text class="text-normal">{{reportDetail.valveModel}}</text>
+            </view>
+
+            <view class="item-wrap"> 工作压力:
+              <text class="text-normal">{{reportDetail.workPressure}}</text>
+            </view>
+            <view class="item-wrap"> 工作介质:
+              <text class="text-normal">{{reportDetail.workMedium}}</text>
+            </view>
+            <view class="item-wrap"> 要求整定压力:
+              <text class="text-normal">{{reportDetail.requireSettingPressure}}</text>
+            </view>
+            <view class="item-wrap"> 执行标准:
+              <text class="text-normal">{{reportDetail.standard}}</text>
+            </view>
+
+            <view class="item-wrap"> 检验方式:
+              <text class="text-normal">{{reportDetail.checkMode}}</text>
+            </view>
+            <view class="item-wrap"> 检验介质:
+              <text class="text-normal">{{reportDetail.checkMedium}}</text>
+            </view>
+            <view class="item-wrap"> 整定压力:
+              <text class="text-normal">{{reportDetail.settingPressure}}</text>
+            </view>
+            <view class="item-wrap"> 密封试验压力:
+              <text class="text-normal">{{reportDetail.sealTestPressure}}</text>
+            </view>
+            <view class="item-wrap"> 检验结果:
+              <text class="text-normal">{{reportDetail.checkResult}}</text>
+            </view>
+          </view>
+          <view class="item margin padding-top">
+            <view class="item-wrap"> 备注:
+              <text class="text-normal">{{reportDetail.remarks?reportDetail.remarks:'无'}}</text>
+            </view>
+            <view class="item-wrap"> 维护检修情况说明:
+              <text class="text-normal">{{reportDetail.checkExplain?reportDetail.checkExplain:'无'}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='nav-list'>
+    <view class="cu-card article" style="width:100%">
+      <view class="cu-item shadow">
+        <view class="title">
+          <view class="text-cut">流程进度</view>
+        </view>
+        <view class="content">
+
+          <!-- 进度条区域 -->
+          <view class="bg-white padding">
+            <view class="cu-steps">
+              <view class="cu-item {{index>basics?'':'text-blue'}}" wx:for="{{basicsList}}" wx:key>
+                <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
+                <!--  -->
+                <text style="display:block" wx:if="{{index<basics}}">
+                   <block wx:if="{{index==0}}">{{commiterInfo.createName}}</block>
+                   <block wx:if="{{index==1}}">{{commiterInfo.checkName}}</block>
+                   <block wx:if="{{index==2}}">{{commiterInfo.approveName}}</block>
+                </text>
+                <text wx:if="{{index<basics}}">
+                  <block wx:if="{{index==0}}">{{commiterInfo.createTime}}</block>
+                  <block wx:if="{{index==1}}">{{commiterInfo.checkTime}}</block>        
+                  <block wx:if="{{index==2}}">{{commiterInfo.approveTime}}</block>        
+                </text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="btn-wrap flex align-center justify-between margin-bottom" style="width:100%">
+    <view class="cu-form-group margin-left" style="width:60%">
+      <picker  bindchange="PickerChange" value="{{index}}" range="{{picker}}" wx:if="{{flag==0}}">
+        <view class="picker">
+          {{index?picker[index]:'选择审核人'}}
+        </view>
+      </picker>
+      <picker  bindchange="PickerChange1" value="{{index}}" range="{{picker1}}" wx:if="{{flag==2}}">
+        <view class="picker1">
+          {{index?picker1[index]:'选择审批人'}}
+        </view>
+      </picker>
+      <!-- <picker bindchange="PickerChange1" value="{{index}}" range="{{picker1}}" wx:if="{{flag==4}}">
+        <view class="picker1">
+          {{index?picker1[index]:'选择归档人'}}
+        </view>
+      </picker> -->
+      <view  wx:if="{{flag==4}}">提交归档</view>
+    </view>
+    <button class="cu-btn   shadow " style="width:30%" bindtap="commit" data-checkman="{{checkman}}" data-flag="{{flag}}">提交</button>
+  </view>
 </view>

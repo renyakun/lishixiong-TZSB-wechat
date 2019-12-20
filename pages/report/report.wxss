@@ -9,3 +9,16 @@ ec-canvas {
   width: 50%;
   height: 50%;
 }
+
+.mychart-dec{
+  position: absolute;
+  left:50%;
+  top: 50%;
+  width: 140rpx;
+  height: 70rpx;
+  text-align: center;
+  line-height: 70rpx;
+  margin-left: -70rpx;
+  margin-top: -35rpx;
+  z-index: 1000;
+}

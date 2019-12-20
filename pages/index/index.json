@@ -1,5 +1,4 @@
 {
   "usingComponents": {
-    "ec-canvas": "../../my-component/ec-canvas/ec-canvas"
   }
 }
