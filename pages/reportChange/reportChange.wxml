@@ -1,0 +1,113 @@
+<!--pages/reportChange/reportChange.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="content">报告修改</view>
+  <view slot="backText">返回</view>
+</cu-custom>
+
+<form>
+  <view class="cu-form-group margin-top">
+    <view class="title">使用单位</view>
+    <input  value="{{reportDetail.companyUse}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">单位地址</view>
+    <input  value="{{reportDetail.companyAddress}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">联系人</view>
+    <input  value="{{reportDetail.companyContacts}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">联系电话</view>
+    <input  value="{{reportDetail.telephone}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">安全阀出厂编号</view>
+    <input  value="{{reportDetail.deviceNo}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">安装位置</view>
+    <input  value="{{reportDetail.installLocation}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">安全阀类型</view>
+    <input  value="{{reportDetail.valveType}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">安全阀型号</view>
+    <input  value="{{reportDetail.valveModel}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">执行标准</view>
+    <input  value="{{reportDetail.standard}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">检验方式</view>
+    <input  value="{{reportDetail.checkMode}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">检验介质</view>
+    <input  value="{{reportDetail.workMedium}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">工作压力</view>
+    <input  value="{{reportDetail.workPressure}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">要求整定压力</view>
+    <input  value="{{reportDetail.requireSettingPressure}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">整定压力</view>
+    <input  value="{{reportDetail.settingPressure}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">密封试验压力</view>
+    <input  value="{{reportDetail.sealTestPressure}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">检验结果</view>
+    <input  value="{{reportDetail.checkResult}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">备注</view>
+    <input  value="{{reportDetail.remarks}}"></input>
+    
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">维护检修情况说明</view>
+    <input  value="{{reportDetail.checkExplain}}"></input>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title">其他</view>
+    <input  value=""></input>
+  </view>
+  
+
+
+
+  <!-- <view class="cu-form-group">
+    <view class="title">多列选择</view>
+    <picker mode="multiSelector" bindchange="MultiChange" bindcolumnchange="MultiColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <view class="picker">
+        {{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">时间选择</view>
+    <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="TimeChange">
+      <view class="picker">
+        {{time}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">日期选择</view>
+    <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
+      <view class="picker">
+        {{date}}
+      </view>
+    </picker>
+  </view> -->
+</form>

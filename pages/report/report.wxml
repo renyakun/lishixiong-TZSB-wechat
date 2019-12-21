@@ -19,10 +19,10 @@
       <!-- 内容区 -->
       <view class="cu-bar bgwhite border-botom padding-bottom">
         <view class="action flex flex-direction justify-center" style="width:100%;height:100%">
+          <text class="mychart-dec text-bold text-blue">今日报告{{totalNum}}份</text>
           <!-- 饼图  -->
-          <view class="canvans-wrap" style="position:relative" >
+          <view class="canvans-wrap" style="position:relative" wx:if="{{numFlag}}">
             <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
-            <text class="mychart-dec">今日报告{{totalNum}}</text>
           </view>
           <view class="total-wrap margin-top">
             <view class="text-lg">

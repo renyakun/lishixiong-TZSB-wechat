@@ -1,1 +1,21 @@
 /* pages/reportList/archivelist/archivelist.wxss */
+
+.arrow {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 0;
+  top: 100rpx;
+}
+
+.cu-bar .action {
+  justify-content: space-between;
+}
+
+.my-btn {
+  width: 120rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  border-radius: 50rpx;
+  border: 1rpx solid #ccc;
+}

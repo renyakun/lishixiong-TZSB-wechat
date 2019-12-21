@@ -1,1 +1,42 @@
 /* pages/search/search.wxss */
+
+/**index.wxss**/
+
+.cu-list.menu-avatar>.cu-item .content {
+  left: 0;
+}
+
+.solid-left::after{
+  border-left: 20rpx solid #0081ff;
+}
+
+/* 修改右侧宽度 */
+.cu-list.menu-avatar>.cu-item .action{
+  width: 100%;
+  text-align: right;
+}
+
+.margin{
+  margin: 15rpx;
+}
+.margin-top {
+  margin-top: 15rpx;
+}
+.radius{
+  border-radius: 10rpx;
+}
+
+.shadow{
+  box-shadow: 3rpx 3rpx 10rpx #99D6FF;
+}
+
+
+/* .canvans-wrap{
+  height: 40vh;
+  width: 100%;
+}
+
+ec-canvas {
+  width: 50%;
+  height: 50%;
+} */

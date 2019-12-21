@@ -1,6 +1,4 @@
-// pages/search/search.js
-
-
+// pages/reportChange/reportChange.js
 const {
   url
 } = require('../../utils/url.js');
@@ -11,19 +9,50 @@ import {
   checkModel
 } from '../../utils/WeChatfction.js'
 
-
 Page({
-  // 获取报告列表
-  getList() {
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    formList: [
+      '使用单位',
+      '单位地址',
+      '联系人',
+      '联系电话',
+      '安全阀出厂编号',
+      '安装位置',
+      '安全阀类型',
+      '安全阀型号',
+      '工作介质',
+      '执行标准',
+      '检验方式',
+      '检验介质',
+      '工作压力',
+      '要求整定压力',
+      '整定压力',
+      '密封试验压力',
+      '检验结果',
+      '备注',
+      '维护检修情况说明',
+      '其他',
+    ]
+  },
+
+  // 获取报告信息
+  getReportDetail(reportNo) {
     let cookie = getApp().globalData.cookie;
-    wxRequest('GET', url + '/report/list', {
-      // reportNo: reportNo,
+    // console.log(this.data.reportNo)
+    let reportno = this.data.reportNo;
+    wxRequest('GET', url + '/report/getReportDetail', {
+      reportNo: reportno,
     }, cookie, (res) => {
       console.log(res.data.data)
       if (res.data.ok) {
         console.log("获取详情数据成功")
         this.setData({
-          list: res.data.data.list
+          reportDetail: res.data.data.reportInfo,
+          commiterInfo: res.data.data.historyInfo
         })
       }
     }, (err) => {
@@ -32,17 +61,16 @@ Page({
   },
 
   /**
-   * 页面的初始数据
-   */
-  data: {
-
-  },
-
-  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.getList();
+    console.log(options)
+    this.setData({
+      reportNo: options.reportNo,
+      flag: options.flag,
+    })
+
+    this.getReportDetail();
   },
 
   /**

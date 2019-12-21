@@ -29,12 +29,12 @@
           <view class="cu-list">
             <view class="cu-item text-df text-bold" style="border-top: 1rpx solid #eee;positon:relative">
               <view class="margin">
-                <text class="cuIcon-profile text-blue"></text> 创建人: {{item.createName}}</view>
+                <text class="cuIcon-profile text-blue"></text> 审核人: {{item.checkName}}</view>
               <view class="margin">
-                <text class="cuIcon-time text-blue"></text> 创建时间: {{item.createTime}}</view>
+                <text class="cuIcon-time text-blue"></text> 审核时间: {{item.checkTime}}</view>
               <view class="margin text-sm text-center flex " style="flex-direction:row-reverse" bindtap="">
                 <text class="my-btn" style="" catchtap="newReportInfo" wx:if="{{item.modifyFlag==2}}" data-flag="{{item.modifyFlag}}" data-reportno="{{item.reportNo}}">提交审批</text>
-                <text class="my-btn" style="" catchtap="newReportInfo" wx:if="{{item.modifyFlag==12}}" data-flag="{{item.modifyFlag}}" data-reportno="{{item.reportNo}}">修改报告</text>
+                <text class="my-btn" style="" catchtap="changeReport" wx:if="{{item.modifyFlag==12}}" data-flag="{{item.modifyFlag}}" data-reportno="{{item.reportNo}}">修改报告</text>
               </view>
               <text class="arrow text-xl cuIcon-right"></text>
             </view>

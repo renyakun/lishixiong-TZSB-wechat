@@ -102,11 +102,13 @@
                    <block wx:if="{{index==0}}">{{commiterInfo.createName}}</block>
                    <block wx:if="{{index==1}}">{{commiterInfo.checkName}}</block>
                    <block wx:if="{{index==2}}">{{commiterInfo.approveName}}</block>
+                   <block wx:if="{{index==3}}">{{commiterInfo.fileName}}</block>
                 </text>
                 <text wx:if="{{index<basics}}">
                   <block wx:if="{{index==0}}">{{commiterInfo.createTime}}</block>
                   <block wx:if="{{index==1}}">{{commiterInfo.checkTime}}</block>        
                   <block wx:if="{{index==2}}">{{commiterInfo.approveTime}}</block>        
+                  <block wx:if="{{index==3}}">{{commiterInfo.fileTime}}</block>        
                 </text>
               </view>
             </view>
@@ -116,7 +118,7 @@
     </view>
   </view>
 
-  <view class="btn-wrap flex align-center justify-between margin-bottom" style="width:100%">
+  <view class="btn-wrap flex align-center justify-between margin-bottom" style="width:100%" wx:if="{{flag!=5}}">
     <view class="cu-form-group margin-left" style="width:60%">
       <picker  bindchange="PickerChange" value="{{index}}" range="{{picker}}" wx:if="{{flag==0}}">
         <view class="picker">

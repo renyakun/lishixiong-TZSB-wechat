@@ -146,12 +146,20 @@ Page({
           fileReportNum,
           newReportNum
         } = res.data.data;
-
+        
         let totalNum = aprroveReportNum + checkReportNum + fileReportNum + newReportNum;
-        this.setData({
-          totalNum: totalNum
-        })
-
+        console.log(totalNum);
+        if (totalNum == 0){
+          this.setData({
+            totalNum: totalNum,
+            numFlag: false
+          })
+        }else{
+          this.setData({
+            totalNum: totalNum,
+            numFlag: true
+          })
+        }
         console.log(checkReportNum);
         this.setData({
           todayReportList: res.data.data

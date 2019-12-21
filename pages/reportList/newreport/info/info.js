@@ -226,6 +226,10 @@ Page({
       this.setData({
         basics: 3,
       })
+    } else if (options.flag == 5) {
+      this.setData({
+        basics: 4,
+      })
     }
     this.setData({
       reportNo: options.reportNo,

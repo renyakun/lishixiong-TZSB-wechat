@@ -109,6 +109,13 @@
 					"id": -1,
 					"name": "审核报告列表",
 					"pathName": "pages/reportList/checklist/checklist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "修改报告页面",
+					"pathName": "pages/reportChange/reportChange",
 					"scene": null
 				}
 			]

@@ -10,7 +10,8 @@
     "pages/reportList/checklist/checklist",
     "pages/reportList/newreport/newreport",
     "pages/reportList/newreport/info/info",
-    "pages/reportDetail/reportDetail"
+    "pages/reportDetail/reportDetail",
+    "pages/reportChange/reportChange"
   ],
   "window": {
     "navigationBarBackgroundColor": "#39b54a",
