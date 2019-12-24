@@ -7,7 +7,7 @@
 }
 
 .solid-left::after{
-  border-left: 20rpx solid #0081ff;
+  /* border-left: 20rpx solid #0081ff; */
 }
 
 /* 修改右侧宽度 */

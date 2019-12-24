@@ -8,5 +8,25 @@ page {
     width: 100vm;
     height: 50vh;
     margin: 50rpx auto;
+    /* background-color: red; */
 }
+
+
+.bg-login {
+  background: linear-gradient(45deg, #00aeff, #1cbbb4);
+  color: white;
+}
+
+.indigo {
+  background: linear-gradient(45deg, #00aeff, #1cbbb4);
+}
+
+
+input {
+  height: 64rpx;
+  line-height: 64rpx;
+  font-size: 26rpx;
+  /* background-color: transparent; */
+}
+
 

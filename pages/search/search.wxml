@@ -1,27 +1,52 @@
 <!--pages/search/search.wxml-->
-<cu-custom bgColor="bg-gradual-blue">
+<cu-custom bgColor="bg-gradual-blue" isCustom="true">
   <view slot="content">报告搜索</view>
 </cu-custom>
 
+<view class="cu-bar search  {{fixedflag?'fixed':''}} indigo shadow-blur" style="top:10vh;">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="输入搜索的关键词" confirm-type="search"></input>
+  </view>
+</view>
 
-<view class="cu-list menu-avatar">
-        <view class="solid-left radius shadow margin cu-item" wx:for="{{list}}" wx:key="id" style="border-top:1rpx solid white" bindtap="toReportInfo" data-reportNo="{{item.reportNo}}" data-flag="{{item.flag}}">
-          <view class="content flex flex-direction justify-around" style="padding:30rpx">
-            <view class="text-black text-df">
-              <text class="cuIcon-time text-red"></text>
-              <text class="margin-left">{{item.createTime}}</text>
-            </view>
-            <view class="text-black text-df">
-              <text class="cuIcon-form text-red"></text>
-              <text class="margin-left"> {{item.reportNo}}</text>
-            </view>
-          </view>
-          <view class="action flex flex-direction">
-            <view class="text-blue text-sm ">待审核
-              <text class="cuIcon-title text-blue"></text>
-            </view>
-            <view class="text-black text-sm ">提交人:{{item.preUser}}</view>
-            <!-- <view class="cu-tag round bg-grey sm">5</view> -->
-          </view>
-        </view>
+
+<view class="cu-list menu-avatar" style="margin-top:10vh">
+  <view class="solid-left radius shadow margin cu-item" wx:for="{{list}}" wx:key="id" style="border-top:1rpx solid white" bindtap="toReportInfo" data-reportNo="{{item.reportNo}}" data-flag="{{item.flag}}">
+    <view class="content flex flex-direction justify-around" style="padding:30rpx">
+      <view class="text-black text-df">
+        <text class="cuIcon-time text-red"></text>
+        <text class="margin-left">{{item.createTime}}</text>
       </view>
+      <view class="text-black text-df">
+        <text class="cuIcon-form text-red"></text>
+        <text class="margin-left"> {{item.reportNo}}</text>
+      </view>
+    </view>
+    <view class="action flex flex-direction">
+      <view class="text-blue text-sm ">待审核
+        <text class="cuIcon-title text-blue"></text>
+      </view>
+      <!-- <view class="text-blue text-sm ">待审核
+        <text class="cuIcon-title text-blue"></text>
+      </view>
+      <view class="text-blue text-sm ">审批通过
+        <text class="cuIcon-title text-blue"></text>
+      </view>
+      <view class="text-blue text-sm ">审核通过
+        <text class="cuIcon-title text-blue"></text>
+      </view>
+      <view class="text-blue text-sm ">审批不通过
+        <text class="cuIcon-title text-blue"></text>
+      </view>
+      <view class="text-blue text-sm ">审核不通过
+        <text class="cuIcon-title text-blue"></text>
+      </view>
+      <view class="text-blue text-sm ">报告归档
+        <text class="cuIcon-title text-blue"></text>
+      </view> -->
+      <view class="text-black text-sm ">当前处理人:{{item.preUser}}</view>
+      <!-- <view class="cu-tag round bg-grey sm">5</view> -->
+    </view>
+  </view>
+</view>

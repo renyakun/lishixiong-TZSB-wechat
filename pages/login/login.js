@@ -7,19 +7,61 @@ import {
   showToast
 } from '../../utils/WeChatfction.js';
 
+
+const utilMd5 = require('../../utils/md5.js');
+
 const app = getApp()
 
 Page({
 
-  // 登录接口 跳转到主页
-  login() {
-    // 发送请求,执行登录校验
-    console.log(1111);
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    user: '',
+    pwd: '',
+    loginBtnTxt: '登录', //登录按钮上的文字
+    loginBtnBgBgColor: '#ff9900', //初始时背景颜色，点击后变为灰色
+    btnLoading: false, //控制登录按钮点击后是否显示loading效果
+    disabled: false //登录中，按钮不能点击
+  },
+
+  formSubmit(e) {
+    let userInfo = e.detail.value;
+    this.checkLogin(userInfo);
+    // if (user.length < 0) {
+    //   showToast('请输入用户名', 'none', 1000);
+    // } else if (pwd.length < 0) {
+    //   showToast('密码不能为空', 'none', 1000);
+    // } else {
+
+  },
+
+  checkLogin(param) {
+    console.log(param);
+    let user = param.admin.trim();
+    let pwd = param.pwd.trim();
+    console.log(user.length)
+    console.log(typeof(user.length))
+    if (user.length == 0) {
+      console.log('123')
+      showToast('请输入用户名', 'none', 1000);
+    } else if (pwd.length == 0) {
+      showToast('密码不能为空', 'none', 1000);
+    } else {
+      this.login(param);
+    }
+  },
+
+  login(param) {
+    let user = param.admin.trim();
+    let pwd = utilMd5.hexMD5(param.pwd.trim());
     wx.request({
       url: url + "/report/user/login",
       data: {
-        user: "admin",
-        pwd: "e10adc3949ba59abbe56e057f20f883e"
+        user: user,
+        pwd: pwd
       },
       header: {
         accept: "*/*",
@@ -27,10 +69,10 @@ Page({
       },
       method: "POST",
       success: res => {
-        getApp().globalData.cookie = 'JSESSIONID=' + res.data.data.sessionId;
         console.log(res.data.data.sessionId);
-        showToast('登陆成功', null, 1000);
+        getApp().globalData.cookie = 'JSESSIONID=' + res.data.data.sessionId;
         if (res.data.ok) {
+          showToast('登陆成功', 'none', 1000);
           this.setData({
             cookie: res.data.data.sessionId
           })
@@ -39,37 +81,18 @@ Page({
               url: "/pages/index/index"
             })
           }, 1000)
+        } else {
+          console.log(res.data.errMsg);
+          showToast(res.data.errMsg, 'none', 1000);
         }
       },
       fail: err => {
-        console.log(err)
+        console.log(err);
       }
     })
-
-
   },
 
 
-  getUserName(e) {
-    console.log(e.detail.value)
-    this.setData({
-      userName: e.detail.value
-    })
-  },
-  getPassword(e) {
-    console.log(e.detail.value)
-    this.setData({
-      password: e.detail.value
-    })
-  },
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    userName: '',
-    password: ''
-  },
 
   /**
    * 生命周期函数--监听页面加载

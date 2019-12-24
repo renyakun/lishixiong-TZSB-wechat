@@ -31,11 +31,28 @@ Page({
     })
   },
 
+
+  // 跳转到任务详情页
+  toReportInfo(e) {
+    console.log(e);
+    let reportNo = e.currentTarget.dataset.reportno;
+    let flag = e.currentTarget.dataset.flag;
+    console.log(reportNo);
+    setTimeout(() => {
+      wx.navigateTo({
+        url: '/pages/reportDetail/reportDetail?reportNo=' + reportNo + '&flag=' + flag,
+      })
+    }, 1000)
+
+  },
+
   /**
    * 页面的初始数据
    */
   data: {
-
+    status:'',
+    flag:'',
+    fixedflag: true
   },
 
   /**

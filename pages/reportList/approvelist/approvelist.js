@@ -57,7 +57,7 @@ Page({
     // console.log(e.currentTarget.dataset.flag);
     // console.log(e.currentTarget.dataset.reportno);
     console.log("修改报告");
-    showToast("推荐去pc端修改", null, 1000)
+    showToast("推荐去pc端修改", 'none', 1000)
     // wx.navigateTo({
     //   url: '/pages/reportChange/reportChange?flag=' + flag + '&reportNo=' + reportNo,
     //   success: function (res) { },
