@@ -1,0 +1,13 @@
+<!--my-component/search-nav/search-nav.wxml-->
+<!--选择框-->
+<view class="product-list">
+ <!--条件选择-->
+ <view class="choice-bar">
+  <view bindtap="opens" data-item="1" class="chioce-item" hover-class="click-once-opaque">{{start}}
+   
+  </view>
+  <view class="sorting-list{{!isstart?' chioce-list-hide':' chioce-list-show'}}">
+   <view wx:for="{{slist}}" catchtap="onclicks1" data-index="{{index}}" class="sorting-item" hover-class="click-once" wx:key="userInfoListId" >{{item.name}}</view>
+  </view>
+ </view>
+</view>

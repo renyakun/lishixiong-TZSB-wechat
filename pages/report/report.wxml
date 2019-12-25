@@ -16,8 +16,13 @@
           <text class="text-xl text-bold">今日报告记录</text>
         </view>
       </view>
+      <!-- 加载动画 -->
+      <view class="text-center" wx:if="{{todayflag}}">
+        <image src="/images/today.gif" mode="aspectFit" style="height:180rpx;"></image>
+      </view>
+
       <!-- 内容区 -->
-      <view class="cu-bar bgwhite border-botom padding-bottom">
+      <view class="cu-bar bgwhite border-botom padding-bottom" wx:else>
         <view class="action flex flex-direction justify-center" style="width:100%;height:100%">
           <text class="mychart-dec text-bold text-blue">今日报告{{totalNum}}份</text>
           <!-- 饼图  -->
@@ -26,7 +31,7 @@
           </view>
           <view class="total-wrap margin-top">
             <view class="text-lg">
-               今日新建报告数:
+              今日新建报告数:
               <text class="text-lg margin-left text-bold" style="font-style:italic"> {{todayReportList.newReportNum}}份</text>
             </view>
             <view class="text-lg">
@@ -54,14 +59,13 @@
       <view class="flex" style="height:15vh">
         <view class="flex-sub  padding-sm margin-xs radius" wx:for="{{reportList}}" wx:key="id" catchtap="reportInfo" data-id="{{item.id}}">
           <view class="flex flex-direction align-center justify-cebter" style="width;100%;height:100%">
-            <image src="{{item.imgUrl}}" widthFix style="width:50%;height:50%"></image> {{item.name
-            }}
+            <image src="{{item.imgUrl}}" widthFix style="width:50%;height:50%"></image> {{item.name }}
           </view>
         </view>
-        
+
       </view>
       <view class="flex">
-        
+
       </view>
     </view>
   </view>

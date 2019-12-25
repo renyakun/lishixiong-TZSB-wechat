@@ -11,7 +11,8 @@
     "pages/reportList/newreport/newreport",
     "pages/reportList/newreport/info/info",
     "pages/reportDetail/reportDetail",
-    "pages/reportChange/reportChange"
+    "pages/reportChange/reportChange",
+    "pages/test/test"
   ],
   "window": {
     "navigationBarBackgroundColor": "#39b54a",

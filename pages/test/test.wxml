@@ -1,0 +1,12 @@
+<!--pages/test/test.wxml-->
+<cu-custom bgColor="bg-gradual-blue">
+  <view slot="content">工作台</view>
+</cu-custom>
+<view class="top-wrap">
+  <search-nav></search-nav>
+</view>
+<view class="margin-top">
+  <block wx:for="{{3}}">
+    <list-card class="margin-top" now-name="待审核" reportNo="123" createTime="2019-12-25" preUser="黄鹏" flag="14"></list-card>
+  </block>
+</view>

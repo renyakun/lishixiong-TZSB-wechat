@@ -85,9 +85,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/demo/demo",
-					"pathName": "pages/demo/demo",
+					"id": 4,
+					"name": "测试页",
+					"pathName": "pages/test/test",
 					"query": "",
 					"scene": null
 				},
@@ -116,6 +116,21 @@
 					"id": -1,
 					"name": "修改报告页面",
 					"pathName": "pages/reportChange/reportChange",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试页面",
+					"pathName": "pages/test/test",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "报告搜索页面",
+					"pathName": "pages/search/search",
+					"query": "",
 					"scene": null
 				}
 			]

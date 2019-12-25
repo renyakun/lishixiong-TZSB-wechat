@@ -1,16 +1,22 @@
+<cu-custom bgColor="bg-gradual-blue">
+  <view slot="content">工作台</view>
+</cu-custom>
 
-  <cu-custom bgColor="bg-gradual-blue">
-    <view slot="content">工作台</view>
-  </cu-custom>
-  <view class="scrollPage">
+<view class="scrollPage">
 
-    <view class="cu-card article no-card  cardpost bgwhite">
-      <view class="cu-bar bgwhite border-botom ">
-        <view class="action">
-          <text class="cuIcon-titles text-blue" style="color:#0081ff"></text>
-          <text class="text-xl text-bold">待处理任务</text>
-        </view>
+  <view class="cu-card article no-card  cardpost bgwhite">
+    <view class="cu-bar bgwhite border-botom ">
+      <view class="action">
+        <text class="cuIcon-titles text-blue" style="color:#0081ff"></text>
+        <text class="text-xl text-bold">待处理任务</text>
       </view>
+    </view>
+
+    <!-- 加载动画 -->
+    <view class="text-center" wx:if="{{todayflag}}">
+      <image src="/images/today.gif" mode="aspectFit" style="height:180rpx;" ></image>
+    </view>
+    <block wx:else>
       <view class="cu-bar bgwhite border-botom padding-bottom">
         <view class="action flex flex-direction" style="width:100%">
           <!-- <view>
@@ -31,23 +37,33 @@
           </view>
         </view>
       </view>
-    </view>
+    </block>
+
+  </view>
 
 
-    <!-- tab栏 -->
-    <view class="cu-bar bg-white solid-bottom margin-top">
-      <view class="action">
-        <text class="cuIcon-titles text-blue " style="color:#0081ff"></text>
-        <text class="text-xl text-bold">任务处理</text>
-      </view>
+  <!-- tab栏 -->
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-titles text-blue " style="color:#0081ff"></text>
+      <text class="text-xl text-bold">任务处理</text>
     </view>
-    <scroll-view scroll-x class="bg-white nav" scroll-with-animation scroll-left="{{scrollLeft}}">
-      <view class="cu-item {{index==TabCur?'text-blue cur':''}}" wx:for="{{tabList}}" wx:key="id" bindtap="tabSelect" data-id="{{index}}">
-        {{item}}
-      </view>
-    </scroll-view>
-    <!-- 待审核列表 -->
-    <view wx:if="{{TabCur==0}}">
+  </view>
+  <scroll-view scroll-x class="bg-white nav" scroll-with-animation scroll-left="{{scrollLeft}}">
+    <view class="cu-item {{index==TabCur?'text-blue cur':''}}" wx:for="{{tabList}}" wx:key="id" bindtap="tabSelect" data-id="{{index}}">
+      {{item}}
+    </view>
+  </scroll-view>
+
+
+  <!-- 待审核列表 -->
+  <view wx:if="{{TabCur==0}}">
+    <!-- 加载动画 -->
+    <view class="bg-white" style="" wx:if="{{checkflag}}" style="height:800rpx;width:100%">
+      <image src="/images/rhomb-white.gif" mode="aspectFit" class="gif-white response"></image>
+    </view>
+
+    <block wx:else>
       <view class="cu-list menu-avatar">
         <view class="solid-left radius shadow margin cu-item" wx:for="{{checkList}}" wx:key="id" style="border-top:1rpx solid white" bindtap="toReportInfo" data-reportNo="{{item.reportNo}}" data-flag="{{item.flag}}">
           <view class="content flex flex-direction justify-around" style="padding:30rpx">
@@ -69,10 +85,20 @@
           </view>
         </view>
       </view>
+    </block>
+
+  </view>
+
+  <!-- 待审批列表  ApproveList-->
+  <view wx:else>
+
+
+    <!-- 加载动画 -->
+    <view class="bg-white" style="" wx:if="{{approveflag}}" style="height:800rpx;width:100%">
+      <image src="/images/rhomb-white.gif" mode="aspectFit" class="gif-white response"></image>
     </view>
 
-    <!-- 待审批列表  ApproveList-->
-    <view wx:else>
+    <block wx:else>
       <view class="cu-list menu-avatar">
         <view class="solid-left radius shadow margin cu-item" wx:for="{{ApproveList}}" wx:key="id" style="border-top:1rpx solid white" bindtap="toReportInfo" data-reportNo="{{item.reportNo}}" data-flag="{{item.flag}}">
           <view class="content flex flex-direction justify-around" style="padding:30rpx">
@@ -94,5 +120,9 @@
           </view>
         </view>
       </view>
-    </view>
+
+
+    </block>
+
   </view>
+</view>

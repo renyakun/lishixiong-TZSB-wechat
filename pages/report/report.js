@@ -104,6 +104,7 @@ Page({
     ec: {},
     todayReportList: [],
     echarsFlag: true,
+    todayflag:true,
   },
   reportInfo(e) {
     let id = e.currentTarget.dataset.id;
@@ -150,15 +151,21 @@ Page({
         let totalNum = aprroveReportNum + checkReportNum + fileReportNum + newReportNum;
         console.log(totalNum);
         if (totalNum == 0){
-          this.setData({
-            totalNum: totalNum,
-            numFlag: false
-          })
+          setTimeout(()=>{
+            this.setData({
+              totalNum: totalNum,
+              numFlag: false,
+              todayflag: false
+            })
+          },1000)
         }else{
-          this.setData({
-            totalNum: totalNum,
-            numFlag: true
-          })
+          setTimeout(() => {
+            this.setData({
+              totalNum: totalNum,
+              numFlag: true,
+              todayflag: false
+            })
+          },1000)   
         }
         console.log(checkReportNum);
         this.setData({

@@ -22,9 +22,13 @@ Page({
       console.log(res.data.data)
       if (res.data.ok) {
         console.log("获取详情数据成功")
-        this.setData({
-          list: res.data.data.list
-        })
+        setTimeout(() => {
+          this.setData({
+            list: res.data.data.list,
+            todayflag: false
+          })
+        }, 1000)
+
       }
     }, (err) => {
       console.log(err)
@@ -50,9 +54,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    status:'',
-    flag:'',
-    fixedflag: true
+    status: '',
+    flag: '',
+    fixedflag: true,
+    todayflag: true,
   },
 
   /**
@@ -101,7 +106,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    console.log('123')
   },
 
   /**

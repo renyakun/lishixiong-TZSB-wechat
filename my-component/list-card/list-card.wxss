@@ -1,1 +1,45 @@
 /* my-component/list-card/list-card.wxss */
+/**index.wxss**/
+@import "../../colorui/main.wxss";
+@import "../../colorui/icon.wxss";
+@import "../../colorui/animation.wxss";
+.cu-list.menu-avatar>.cu-item .content {
+  left: 0;
+}
+
+.solid-left::after{
+  border-left: 20rpx solid #0081ff;
+}
+
+/* 修改右侧宽度 */
+.cu-list.menu-avatar>.cu-item .action{
+  width: 100%;
+  text-align: right;
+}
+
+/* 常用样式类 */
+.margin{
+  margin: 15rpx;
+}
+.margin-top {
+  margin-top: 15rpx;
+}
+.radius{
+  border-radius: 10rpx;
+}
+
+/* 阴影设置 */
+.shadow{
+  box-shadow: 3rpx 3rpx 10rpx #99D6FF;
+}
+
+
+/* .canvans-wrap{
+  height: 40vh;
+  width: 100%;
+}
+
+ec-canvas {
+  width: 50%;
+  height: 50%;
+} */

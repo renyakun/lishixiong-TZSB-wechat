@@ -1,22 +1,25 @@
 <!--my-component/list-card/list-card.wxml-->
-<view class="cu-list menu-avatar">
-  <view class="solid-left radius shadow margin cu-item" wx:for="{{list}}" wx:key="id" style="border-top:1rpx solid white" bindtap="toReportInfo" data-reportNo="{{item.reportNo}}" data-flag="{{item.flag}}">
-    <view class="content flex flex-direction justify-around" style="padding:30rpx">
-      <view class="text-black text-df">
-        <text class="cuIcon-time text-red"></text>
-        <text class="margin-left">{{item.createTime}}</text>
+
+<view class="list-wrap">
+  <view class="cu-list menu-avatar">
+    <view class="solid-left radius shadow margin cu-item" style="border-top:1rpx solid white" bindtap="toReportInfo" data-reportNo="{{reportNo}}" data-flag="{{flag}}">
+      <view class="content flex flex-direction justify-around" style="padding:30rpx">
+        <view class="text-black text-df">
+          <text class="cuIcon-time text-red"></text>
+          <text class="margin-left">{{createTime}}</text>
+        </view>
+        <view class="text-black text-df">
+          <text class="cuIcon-form text-red"></text>
+          <text class="margin-left"> {{reportNo}}</text>
+        </view>
       </view>
-      <view class="text-black text-df">
-        <text class="cuIcon-form text-red"></text>
-        <text class="margin-left"> {{item.reportNo}}</text>
+      <view class="action flex flex-direction">
+        <view class="text-blue text-sm ">{{nowName}}
+          <text class="cuIcon-title text-blue"></text>
+        </view>
+        <view class="text-black text-sm ">提交人:{{preUser}}</view>
+        <!-- <view class="cu-tag round bg-grey sm">5</view> -->
       </view>
-    </view>
-    <view class="action flex flex-direction">
-      <view class="text-blue text-sm ">待审核
-        <text class="cuIcon-title text-blue"></text>
-      </view>
-      <view class="text-black text-sm ">提交人:{{item.preUser}}</view>
-      <!-- <view class="cu-tag round bg-grey sm">5</view> -->
     </view>
   </view>
 </view>
