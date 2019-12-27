@@ -12,13 +12,15 @@
     "pages/reportList/newreport/info/info",
     "pages/reportDetail/reportDetail",
     "pages/reportChange/reportChange",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/information/information"
   ],
   "window": {
     "navigationBarBackgroundColor": "#39b54a",
     "navigationBarTitleText": "特种设备后台管理系统",
     "navigationBarTextStyle": "white",
-    "navigationStyle": "custom"
+    "navigationStyle": "custom",
+    "backgroundColor": "#ffffff"
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
@@ -44,6 +46,12 @@
         "iconPath": "images/tabbar/search.png",
         "selectedIconPath": "images/tabbar/search_cur.png",
         "text": "搜索报告"
+      },
+      {
+        "pagePath": "pages/information/information",
+        "iconPath": "images/tabbar/information.png",
+        "selectedIconPath": "images/tabbar/information_cur.png",
+        "text": "信息管理"
       }
     ]
   },

@@ -1,0 +1,34 @@
+<view class="nav">
+  
+  <!-- nav顶部2 -->
+  <view class="nav-child borders {{source_open? 'active' : ''}}" bindtap="tapSourceNav" hidden='{{dropDownMenuSourceData.length > 0 ? false : true}}' data-nav="2">
+    <view class="nav-title">{{selected_source_name.length > 0 ?selected_source_name : dropDownMenuTitle[1]}}</view>
+    <view class="icon"></view>
+  </view>
+  <!-- 顶部3 -->
+  <view class="nav-child borders-right {{style_open? 'active' : ''}}" bindtap="tapStyleNav" hidden='{{dropDownMenuStyleData.length > 0 ? false : true}}' data-nav="3">
+    <view class="nav-title">{{selected_style_name.length > 0 ?selected_style_name : dropDownMenuTitle[2]}}</view>
+    <view class="icon"></view>
+  </view>
+</view>
+
+<!-- 报告处理人下拉栏 -->
+<view class="container container_hd {{source_open ? 'show' : 'disappear'}} ">
+  <view class='z-height'>
+    <scroll-view style="height:300rpx" scroll-y>
+      <block wx:for="{{dropDownMenuSourceData}}" wx:key="unique">
+        <view class="sortitem {{selected_source_id==item.id ? ' active ' : ' '}}" data-model='{{item}}' bindtap='selectSourceItem'> {{item.title}}</view>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+<!-- 审核状态下拉栏 -->
+<view class="container container_hd {{style_open ? 'show' : 'disappear'}} ">
+  <view class='z-height'>
+    <scroll-view style="height:300rpx" scroll-y>    
+      <block wx:for="{{dropDownMenuStyleData}}" wx:key="unique">
+        <view class="sortitem {{selected_style_id==item.id ? ' active ' : ' '}}" data-model='{{item}}' bindtap='selectStyleItem'> {{item.title}}</view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

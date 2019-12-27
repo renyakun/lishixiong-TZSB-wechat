@@ -1,7 +1,6 @@
 <!--my-component/search-nav/search-nav.wxml-->
 <!--选择框-->
-<view class="product-list">
- <!--条件选择-->
+<view class="product-list" >
  <view class="choice-bar">
   <view bindtap="opens" data-item="1" class="chioce-item" hover-class="click-once-opaque">{{start}}
    
@@ -11,3 +10,11 @@
   </view>
  </view>
 </view>
+
+<!-- <view class="product-list" style="display:fixed">
+  <view class="choice-bar flex flex-direction">
+    <view wx:for="{{3}}">
+      123
+    </view>
+ </view>
+</view> -->

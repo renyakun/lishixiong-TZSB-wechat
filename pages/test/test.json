@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "list-card":"../../my-component/list-card/list-card",
-    "search-nav":"../../my-component/search-nav/search-nav"
+    "search-nav":"../../my-component/search-nav/search-nav",
+    "dropdownmenu": "../../my-component/dropdownmenu/dropdownmenu"
   }
 }

@@ -3,6 +3,7 @@
 .product-list {
  width: 100%;
  box-sizing: border-box;
+ position: fixed;
 }
   
   
@@ -56,4 +57,25 @@
  line-height: 80rpx;
  padding: 0 40rpx;
  border-bottom: 1rpx solid #ddd;
+}
+
+.flex {
+  display:flex;
+}
+
+.flex-direction{
+  flex-direction: column;
+}
+
+.justify-center{
+  justify-content: center;
+}
+
+
+.justify-between{
+  justify-content: space-between;
+}
+
+.justify-arround{
+  justify-content:  space-around;
 }

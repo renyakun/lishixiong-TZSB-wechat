@@ -21,7 +21,10 @@ Page({
   // 审批报告列表
   getApproveReportList() {
     let cookie = getApp().globalData.cookie;
-    wxRequest('GET', url + '/report/getApproveReportList', {}, cookie, (res) => {
+    wxRequest('GET', url + '/report/getApproveReportList', {
+      pageNum:1,
+      pageSize:10
+    }, cookie, (res) => {
       console.log(res.data.data)
       if (res.data.ok) {
         console.log("获取数据成功")

@@ -19,7 +19,7 @@
             <text class="cu-tag radius bg-green">已提交</text>
           </view>
           <view wx:else>
-            <text class="cu-tag radius bg-red">待审核</text>
+            <text class="cu-tag radius bg-blue">待审核</text>
           </view>
         </view>
       </view>
@@ -36,7 +36,7 @@
                 <text wx:if="{{!isSubmit}}" style="width:120rpx;height:50rpx;line-height:50rpx;border-radius:50rpx;border:1rpx solid #ccc" catchtap="newReportInfo" wx:if="{{item.modifyFlag==0}}" data-flag="{{item.modifyFlag}}" data-reportno="{{item.reportNo}}">提交审核</text>
               <!-- <text  class="margin-right" style="width:120rpx;height:50rpx;line-height:50rpx;border-radius:50rpx;border:1rpx solid #ccc" catchtap="newReportInfo" data-flag="{{item.modifyFlag}}" data-reportno="{{item.reportNo}}">查看报告</text> -->
               </view>
-              <text class="arrow text-xl cuIcon-right"></text>
+              <!-- <text class="arrow text-xl cuIcon-right"></text> -->
             </view>
           </view>
         </view>

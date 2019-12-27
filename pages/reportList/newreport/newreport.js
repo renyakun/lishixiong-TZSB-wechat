@@ -22,7 +22,10 @@ Page({
   // 新建报告列表
   getNewReportList(){
     let cookie = getApp().globalData.cookie;
-    wxRequest('GET', url + '/report/getNewReportList', {}, cookie, (res) => {
+    wxRequest('GET', url + '/report/getNewReportList', {
+      pageNum: 1,
+      pageSize: 10
+    }, cookie, (res) => {
       console.log(res.data.data)
       if (res.data.ok) {
         console.log("获取数据成功")

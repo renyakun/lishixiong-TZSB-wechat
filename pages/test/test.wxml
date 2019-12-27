@@ -1,12 +1,18 @@
 <!--pages/test/test.wxml-->
-<cu-custom bgColor="bg-gradual-blue">
+<!-- <cu-custom bgColor="bg-gradual-blue">
   <view slot="content">工作台</view>
+</cu-custom> -->
+<!-- <dropdownmenu></dropdownmenu> -->
+
+<cu-custom bgColor="bg-gradual-blue" isCustom="true">
+  <view slot="content">报告搜索</view>
 </cu-custom>
-<view class="top-wrap">
-  <search-nav></search-nav>
+<view class="" style="width:100%;height:100vh;position:fixed;top:{{CustomBar}}px;z-index:999">
+  <dropdownmenu catchtouchmove="doNothing" dropDownMenuTitle='{{dropDownMenuTitle}}' dropDownMenuDistrictData='{{data1}}' dropDownMenuSourceData='{{data2}}' dropDownMenuStyleData='{{data3}}' dropDownMenuFilterData='{{data4}}' bind:selectedItem='selectedItem' navHeight="{{data1.length*100}}" />
 </view>
-<view class="margin-top">
-  <block wx:for="{{3}}">
+<view class="cu-list menu-avatar" style="margin-top:{{CustomBar}}px;">
+  <block wx:for="{{10}}">
     <list-card class="margin-top" now-name="待审核" reportNo="123" createTime="2019-12-25" preUser="黄鹏" flag="14"></list-card>
   </block>
 </view>
+<!-- </view> -->

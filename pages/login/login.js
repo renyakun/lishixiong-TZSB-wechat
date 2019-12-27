@@ -69,10 +69,9 @@ Page({
       },
       method: "POST",
       success: res => {
-        console.log(res.data.data.sessionId);
-        getApp().globalData.cookie = 'JSESSIONID=' + res.data.data.sessionId;
         if (res.data.ok) {
           showToast('登陆成功', 'none', 1000);
+          getApp().globalData.cookie = 'JSESSIONID=' + res.data.data.sessionId;
           this.setData({
             cookie: res.data.data.sessionId
           })

@@ -40,3 +40,24 @@ ec-canvas {
   width: 50%;
   height: 50%;
 } */
+
+.flex {
+  display:flex;
+}
+
+.flex-direction{
+  flex-direction: column;
+}
+
+.align-items{
+  align-items: center;
+}
+
+
+.justify-between{
+  justify-content: space-between;
+}
+
+.justify-arround{
+  justify-content:  space-around;
+}

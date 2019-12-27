@@ -15,6 +15,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    todayflag:true,//动画标志
     reportDetail: [], //报告详情
     commiterInfo: [], //提交人的信息  
     basicsList: [{ //进度条数据
@@ -24,7 +25,7 @@ Page({
       icon: 'radioboxfill',
       name: '审核报告'
     }, {
-      icon: 'roundclosefill',
+      icon: 'radioboxfill',
       name: '审批报告'
     }, {
       icon: 'roundcheckfill',
@@ -54,7 +55,8 @@ Page({
         console.log("获取详情数据成功")
         this.setData({
           reportDetail: res.data.data.reportInfo,
-          commiterInfo: res.data.data.historyInfo
+          commiterInfo: res.data.data.historyInfo,
+          todayflag:false,
         })
       }
     }, (err) => {
