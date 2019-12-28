@@ -81,7 +81,8 @@ Page({
         console.log(arr1);
         this.setData({
           checkUserList: res.data.data,
-          picker: arr1
+          picker: arr1,
+          todayflag: false,
         })
       }
     }, (err) => {
@@ -181,6 +182,7 @@ Page({
         console.log(arr1);
         this.setData({
           approveUserList: res.data.data,
+          todayflag: false,
           picker1: arr1
         })
       }
@@ -236,6 +238,7 @@ Page({
     this.setData({
       reportNo: options.reportNo,
       flag: options.flag,
+      todayflag:true
     })
     // 报告信息
     this.getReportDetail(options.reportNo);
@@ -273,7 +276,11 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    this.setData({
+      reportNo: options.reportNo,
+      flag: options.flag,
+      todayflag: true
+    })
   },
 
   /**

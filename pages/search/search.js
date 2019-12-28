@@ -8,7 +8,8 @@ const {
 import {
   wxRequest,
   showToast,
-  checkModel
+  checkModel,
+  showLoading
 } from '../../utils/WeChatfction.js'
 
 const app = getApp();
@@ -22,6 +23,19 @@ Page({
     }, cookie, (res) => {
       console.log(res.data.data)
       if (res.data.ok) {
+        if(res.data.data.list.length<1){
+          if (this.data.pageNum == '1'){
+            // 首次加载没有数据 show nodata
+            this.setData({
+              nodataFlag: true
+            })
+          }else{
+            // 没有更多
+            this.setData({
+              loadflag: true
+            })
+          }
+        }
         console.log("获取详情数据成功")
         setTimeout(() => {
           this.setData({
@@ -31,6 +45,8 @@ Page({
           })
         }, 1000)
 
+      }else{
+        showToast(res.data.errMsg,'none',1000)
       }
     }, (err) => {
       console.log(err)
@@ -42,7 +58,9 @@ Page({
     })
   },
 
-
+  true(){
+    return false;
+  },
 
   // 获取处理人列表
   getPreUser() {
@@ -87,13 +105,28 @@ Page({
       console.log(res.data.data)
       if (res.data.ok) {
         console.log("获取详情数据成功")
-        setTimeout(() => {
-          this.setData({
-            serachList: res.data.data,
-            list: [...this.data.list, ...res.data.data.list],
-            selectedflag: '1'
-          })
-        }, 1000)
+        if(res.data.data.list.length<1){
+          // 没有数据
+          if(this.data.pageNum1=='1'){
+            this.setData({
+              nodataFlag: true
+            })
+          } else {
+            // 下拉没有更多数据,底部显示
+            this.setData({
+              loadflag: true
+            })
+          }
+        }else{
+          setTimeout(() => {
+            this.setData({
+              serachList: res.data.data,
+              list: [...this.data.list, ...res.data.data.list],
+              selectedflag: '1',
+              nodataFlag: false,
+            })
+          }, 1000)
+        }   
       }
     }, (err) => {
       console.log(err)
@@ -122,9 +155,13 @@ Page({
     pageSize1: 10, //条数
     list: [], //报告列表
     fixedflag: true,
-    todayflag: true,
+    todayflag: true,  //加载动画标志
     showFlag: false,
+    nodataFlag:false, //没有数据标志
     selectedflag: '0', //所有列表,筛选状态 flag  0 全部, 1,筛选状态  加载更多使用
+
+    loadflag:false, //到底标志
+    tiptxt:'到底了',
     name: '', //筛选名称 
     status: '', //状态筛选
     sourceopen: '', //
@@ -178,9 +215,11 @@ Page({
       name: name,
       pageNum1: 1, //页码
       pageSize1: 10, //条数
-      list: []
+      list: [],
+      // todayflag:true
+      loadflag: false
     })
-
+    showLoading();
     this.serachReport();
   },
   // 状态筛选
@@ -218,11 +257,12 @@ Page({
       flag: flag,
       pageNum1: 1, //页码
       pageSize1: 10, //条数
-      list: []
+      list: [],
+      // todayflag: true
+      loadflag: false
     })
-
+    showLoading();
     this.serachReport();
-
   },
 
   setopenflag(e) {
@@ -289,6 +329,7 @@ Page({
       list: [],
       name: '', //筛选名称 
       status: '', //状态筛选
+      loadflag: false
     })
     this.getList();
     this.getPreUser();
@@ -299,21 +340,26 @@ Page({
    */
   onReachBottom: function() {
     if (this.data.selectedflag == '0') {
-      let pageNum = this.data.pageNum + 1;
-      this.setData({
-        pageNum: pageNum
-      })
-      this.getList();
+      // 到底后
+      if (!this.data.loadflag){
+        let pageNum = this.data.pageNum + 1;
+        this.setData({
+          pageNum: pageNum
+        })
+        showLoading();
+        this.getList();
+      }
     }
     if (this.data.selectedflag == '1') {
-      let pageNum1 = this.data.pageNum1 + 1;
-      this.setData({
-        pageNum1: pageNum1,
-      })
-      this.serachReport();
+      if (!this.data.loadflag) {
+        let pageNum1 = this.data.pageNum1 + 1;
+        this.setData({
+          pageNum1: pageNum1,
+        })
+        showLoading();
+        this.serachReport();
+      }
     }
-
-
   },
 
   /**

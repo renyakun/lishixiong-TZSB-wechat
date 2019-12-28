@@ -7,6 +7,8 @@
   left: 0;
 }
 
+
+/* 卡片左边实现 */
 .border-left-purple,
 .border-left-blue,
 .border-left-green,

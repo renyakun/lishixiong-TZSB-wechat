@@ -47,6 +47,7 @@ page {
 	--gradualPurple: linear-gradient(45deg, #9000ff, #5e00ff);
 	--gradualPink: linear-gradient(45deg, #ec008c, #6739b6);
 	--gradualBlue: linear-gradient(45deg, #0081ff, #1cbbb4);
+	--gradualLightBlue: linear-gradient(45deg, #0080ff41, #1cbbb3cc);
 	/* 阴影透明色 */
 	--ShadowSize: 6rpx 6rpx 8rpx;
 	--redShadow: rgba(204, 69, 59, 0.2);
@@ -2918,6 +2919,7 @@ scroll-view.cu-steps .cu-item {
 .grid {
 	display: flex;
 	flex-wrap: wrap;
+  justify-content: center
 }
 
 .grid.grid-square {
@@ -2970,9 +2972,9 @@ scroll-view.cu-steps .cu-item {
 }
 
 .grid.col-2.grid-square>view {
-	padding-bottom: calc((100% - 20rpx)/2);
+	padding-bottom: calc((100% - 100rpx)/2);
 	height: 0;
-	width: calc((100% - 20rpx)/2);
+	width: calc((100% - 100rpx)/2);
 }
 
 .grid.col-3.grid-square>view {

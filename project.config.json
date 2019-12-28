@@ -137,6 +137,21 @@
 					"id": -1,
 					"name": "搜索页面",
 					"pathName": "pages/search/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人信息",
+					"pathName": "pages/information/information",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 13,
+					"name": "个人信息页",
+					"pathName": "pages/userInfo/userInfo",
+					"query": "",
 					"scene": null
 				}
 			]

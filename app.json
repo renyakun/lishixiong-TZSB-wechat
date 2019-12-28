@@ -13,7 +13,8 @@
     "pages/reportDetail/reportDetail",
     "pages/reportChange/reportChange",
     "pages/test/test",
-    "pages/information/information"
+    "pages/information/information",
+    "pages/userInfo/userInfo"
   ],
   "window": {
     "navigationBarBackgroundColor": "#39b54a",

@@ -1,0 +1,22 @@
+/* pages/userInfo/userInfo.wxss */
+
+.my-card {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  border: 1rpx solid #ccc;
+  width: 70vw;
+  height: 45vh;
+  margin-left: -35vw;
+  background-color: white;
+  border-radius: 50rpx;
+  box-shadow: 0 30rpx 20rpx rgba(0, 0, 0, 0.2);
+}
+
+.top-wrap{
+}
+
+.cu-list{
+  /* border: 1rpx solid white;
+  box-shadow: 2rpx 1rpx 3rpx rgba(22, 217, 243, 0.418); */
+}

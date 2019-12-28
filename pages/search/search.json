@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "dropdownmenu": "../../my-component/dropdownmenu/dropdownmenu",
-    "list-card": "../../my-component/list-card/list-card"
+    "list-card": "../../my-component/list-card/list-card",
+    "i-load-more": "../../../colorui/dist/load-more/index"
   },
   "onReachBottomDistance":150,
   "enablePullDownRefresh": true

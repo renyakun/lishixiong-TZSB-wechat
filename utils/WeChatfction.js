@@ -66,7 +66,7 @@ function showLoading() {
   });
   setTimeout(() => {
     wx.hideLoading()
-  }, 1500);
+  }, 1000);
 };
 
 //应用页面跳转

@@ -1,1 +1,14 @@
 /* pages/information/information.wxss */
+
+.my-card{
+  border: 1rpx solid var(--greyLight);
+  width: 30vh;
+  height: 15vh;
+  line-height: 15vh;
+  text-align: center;
+  background-color: white;
+}
+
+.shadow{
+  box-shadow: 3rpx 3rpx 10rpx #99D6FF;
+}

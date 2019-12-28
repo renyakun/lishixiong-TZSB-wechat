@@ -8,21 +8,32 @@
 <view class="text-center bg-white" wx:if="{{todayflag}}">
   <image src="/images/today.gif" mode="aspectFit" style="height:100vh;"></image>
 </view>
+
 <block wx:else>
-<!--  -->
+  <!--  -->
   <view class="" style="width:100%;height:{{sourceopen?'100vh':''}};position:fixed;top:{{CustomBar}}px;z-index:999" wx:if="{{!todayflag}}">
-    <dropdownmenu catchtouchmove="doNothing" dropDownMenuTitle='{{dropDownMenuTitle}}' dropDownMenuSourceData='{{data2}}' dropDownMenuStyleData='{{data3}}' bind:selectedName='selectedName' bind:selectedStatus='selectedStatus' navHeight='{{data1.length*100}}' bind:setopenflag='setopenflag'
-    />
+    <dropdownmenu catchtouchmove="true" dropDownMenuTitle='{{dropDownMenuTitle}}' dropDownMenuSourceData='{{data2}}' dropDownMenuStyleData='{{data3}}' bind:selectedName='selectedName' bind:selectedStatus='selectedStatus' navHeight='{{data1.length*100}}'
+      bind:setopenflag='setopenflag' />
   </view>
   <!-- <view style="height:{{2*CustomBar}}px"></view> -->
 
   <view class="scrollPage" style="margin-top:{{90}}rpx;">
-  <!-- <button bindtap="reset">重置</button> -->
-    <!-- <view class="cu-list menu-avatar" > -->  
-    <block>
+
+    <block wx:if="{{nodataFlag}}">
+      <view class="text-center bg-white">
+        <image src="/images/no-data.jpg" mode="aspectFit" style="height:100vh;"></image>
+      </view>
+
+    </block>
+    <!-- <button bindtap="reset">重置</button> -->
+    <!-- <view class="cu-list menu-avatar" > -->
+    <block wx:else>
       <block wx:for="{{list}}" wx:key="id">
         <list-card class="margin-top" now-name="{{item.flag}}" reportNo="{{item.reportNo}}" createTime="{{item.createTime}}" preUser="{{item.preUser}}" flag="{{item.flag}}"></list-card>
       </block>
+      <view class="margin-top-xl" wx:if="{{loadflag}}">
+        <i-load-more tip="{{tiptxt}}" loading="{{ false }}" />
+      </view> 
     </block>
   </view>
 

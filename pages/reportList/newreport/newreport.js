@@ -29,6 +29,7 @@ Page({
       console.log(res.data.data)
       if (res.data.ok) {
         console.log("获取数据成功")
+        wx.hideLoading();
         this.setData({
           newReportList: [...res.data.data.list, ...this.data.newReportList]
         })
@@ -90,6 +91,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     this.getNewReportList();
   },
 
