@@ -18,6 +18,7 @@ Page({
   data: {
     reportDetail: [], //报告详情
     commiterInfo: [], //提交人的信息  
+    falg:'',
     basicsList: [{ //进度条数据
       icon: 'usefullfill',
       name: '新建报告'
@@ -168,6 +169,9 @@ Page({
       this.setData({
         basics: 1,
       })
+    }
+    if (options.flag==99){
+      // 从搜索页面跳转进来
     }
     this.setData({
       reportNo: options.reportNo,

@@ -29,7 +29,7 @@
     <!-- <view class="cu-list menu-avatar" > -->
     <block wx:else>
       <block wx:for="{{list}}" wx:key="id">
-        <list-card class="margin-top" now-name="{{item.flag}}" reportNo="{{item.reportNo}}" createTime="{{item.createTime}}" preUser="{{item.preUser}}" flag="{{item.flag}}"></list-card>
+        <list-card class="margin-top" now-name="{{item.flag}}" reportNo="{{item.reportNo}}" createTime="{{item.createTime}}" preUser="{{item.preUser}}" flag="{{99}}"></list-card>
       </block>
       <view class="margin-top-xl" wx:if="{{loadflag}}">
         <i-load-more tip="{{tiptxt}}" loading="{{ false }}" />

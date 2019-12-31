@@ -1,7 +1,7 @@
 <!--pages/reportDetail/reportDetail.wxml-->
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
   <view slot="backText">返回</view>
-  <view slot="content">我的审批</view>
+  <view slot="content">报告详情</view>
 </cu-custom>
 
 <view class="scrollPage" style="position:relative;height:100%">
@@ -87,7 +87,8 @@
       </view>
     </view>
   </view>
-  <view class='nav-list'>
+  <!-- 流程区域 -->
+  <view class='nav-list' wx:if="{{flag!='99'}}">
     <view class="cu-card article" style="width:100%">
       <view class="cu-item shadow">
         <view class="title">
@@ -118,7 +119,7 @@
     </view>
   </view>
 
-  <view class="btn-wrap flex justify-between margin-bottom" style="width:100%">
+  <view class="btn-wrap flex justify-between margin-bottom" style="width:100%" wx:if="{{flag!='99'}}">
     <button class="cu-btn   shadow " style="width:60%" bindtap="pass">通过</button>
     <button class="cu-btn   shadow " style="width:30%" bindtap="refuse">驳回</button>
   </view>

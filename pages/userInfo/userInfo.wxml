@@ -4,42 +4,52 @@
   <view slot="content">我的信息</view>
 </cu-custom>
 <view class="scollPage" style="height:100vh;">
-  <view style="height:40vh" class="top-wrap radius shadow-warp bg-white">
-    <!-- <view class="text-center">电子签名</view> -->
-    <view style="" class="text-center">
-      <image mode="" src="http://120.79.181.56:8079/imgs/20190929_15_51_28_514.jpg"></image>
+  <!-- <view style="height:40vh" class="top-wrap radius shadow-warp bg-white">
+
+
+  </view> -->
+  <view class="cu-bar bgwhite border-botom ">
+    <view class="action">
+      <text class="cuIcon-titles text-blue" style="color:#0081ff"></text>
+      <text class="text-xl text-bold">我的信息</text>
     </view>
-
   </view>
-
   <!-- 个人信息 -->
-  <view class="cu-list menu margin {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+  <view style="" class="cu-list menu margin {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
     <view class="cu-item {{menuArrow?'arrow':''}}">
       <view class="content">
-        <text class="cuIcon-circlefill text-grey"></text>
-        <text class="text-grey">用户名:{{getUserInfo.userName}}</text>
+        <text class="text-black">电子签名:</text>
+        <view style="" class="text-center margin-left">
+          <image mode="widthFix" style="width:30vh;" src="{{getUserInfo.signatureUrl}}"></image>
+        </view>
       </view>
     </view>
     <view class="cu-item {{menuArrow?'arrow':''}}">
       <view class="content">
-        <text class="cuIcon-circlefill text-grey"></text>
-        <text class="text-grey">电话:{{getUserInfo.phone}}</text>
+        <text class="cuIcon-people text-blue"></text>
+        <text class="text-black">用户名:{{getUserInfo.userName}}</text>
       </view>
     </view>
     <view class="cu-item {{menuArrow?'arrow':''}}">
       <view class="content">
-        <text class="cuIcon-circlefill text-grey"></text>
-        <text class="text-grey">email:{{getUserInfo.email}}</text>
+        <text class="cuIcon-phone text-blue"></text>
+        <text class="text-black">电话:{{getUserInfo.phone}}</text>
       </view>
     </view>
     <view class="cu-item {{menuArrow?'arrow':''}}">
       <view class="content">
-        <text class="cuIcon-circlefill text-grey"></text>
-        <text class="text-grey">职位:{{getUserInfo.realName}}</text>
+        <text class="cuIcon-mail text-blue"></text>
+        <text class="text-black">email:{{getUserInfo.email}}</text>
+      </view>
+    </view>
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+      <view class="content">
+        <text class="cuIcon-profile text-blue"></text>
+        <text class="text-black">职位:{{getUserInfo.realName}}</text>
       </view>
     </view>
   </view>
-
+  <!-- <button bindtap="changeUserInfo">修改信息</button> -->
 </view>
 <!-- <view style="height:100%;position:relative">
     <view style="height:40vh" class="bg-blue"></view>

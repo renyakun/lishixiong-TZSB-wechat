@@ -276,11 +276,11 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-    this.setData({
-      reportNo: options.reportNo,
-      flag: options.flag,
-      todayflag: true
-    })
+    // this.setData({
+    //   reportNo: options.reportNo,
+    //   flag: options.flag,
+    //   todayflag: true
+    // })
   },
 
   /**

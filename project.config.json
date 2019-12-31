@@ -153,6 +153,13 @@
 					"pathName": "pages/userInfo/userInfo",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人信息设置修改页面",
+					"pathName": "pages/setting/setting",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

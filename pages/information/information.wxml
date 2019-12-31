@@ -4,17 +4,16 @@
 </cu-custom>
 
 <view class="scrollPage" style="background-color:white">
-  <view class=" padding-top-xl padding-bottom-sm  indigo" style="position:relative;height:40vh">
-    <view class="flex justify-center margin-bottom-sm" style="height:100%">
+  <view class=" padding-top-xl padding-bottom-sm" style="height:40vh">
+    <view class="flex justify-center margin-bottom-sm" style="height:100%;position:relative">
       <view class='text-center flex flex-direction align-center' style="flex:1;justify-content:center">
         <view class="" style="height:10vh;line-height:10vh;flex:1;">
           <view class="text-xxl text-white padding-top">{{'admin'}}</view>
-          <view>{{'admin'}}</view>
         </view>
         <!-- <view class="text text-white flex align-center" style="flex:1">{{'个人信息主页'}}</view> -->
       </view>
-      <view class="text-center flex flex-direction align-center" style="flex:1">
-        <text></text>
+      <view class="text-center flex flex-direction align-center bgc" style="">
+        <image class="" src="http://www.zcool.com.cn/community/03756f25a75aa5aa801213466856f57.jpg"></image>
       </view>
     </view>
     <!-- <view class="shadow-blur bgwhite round  justify-start align-center padding-left" style="width:25vh;height:6vh;line-height:6vh;position: absolute;top:10vh;right:-8vh;" bindtap="techjump" data-target="{{techtit}}">
@@ -25,7 +24,7 @@
   </view>
   <view class="flex padding">
     <view class="margin my-card shadow" style="flex:1;" bindtap="userInfo">个人信息</view>
-    <view class="margin my-card shadow" style="flex:1">安全设置</view>
+    <view class="margin my-card shadow" style="flex:1" bindtap="changeUserInfo">安全设置</view>
   </view>
   <view class="flex padding">
     <view class="margin my-card shadow" style="flex:1">公司信息</view>

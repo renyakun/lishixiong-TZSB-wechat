@@ -21,6 +21,7 @@ Page({
   data: {
     getUserInfo:[],
   },
+  // 获取个人信息
   getUserInfo() {
     // /report/user/getuser
     let cookie = getApp().globalData.cookie;
@@ -39,6 +40,11 @@ Page({
     }, (err) => {
       console.log(err)
     })
+  },
+
+  // 修改个人信息
+  changeUserInfo(){
+    
   },
   /**
    * 生命周期函数--监听页面加载

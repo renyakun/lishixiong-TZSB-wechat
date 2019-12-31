@@ -1,6 +1,6 @@
 /* pages/information/information.wxss */
 
-.my-card{
+.my-card {
   border: 1rpx solid var(--greyLight);
   width: 30vh;
   height: 15vh;
@@ -9,6 +9,16 @@
   background-color: white;
 }
 
-.shadow{
-  box-shadow: 3rpx 3rpx 10rpx #99D6FF;
+.shadow {
+  box-shadow: 3rpx 3rpx 10rpx #99d6ff;
+}
+
+.bgc {
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -50vw;
 }

@@ -1,5 +1,5 @@
 <!--pages/login/login.wxml-->
-<view class="login flex flex-direction">
+<view class="login flex flex-direction" style="height:100%">
   <!-- <view class="title flex justify-center align-center text-xl">
     账号登录
   </view> -->
@@ -7,7 +7,7 @@
   <cu-custom bgColor="{{iswhite}}">
     <view slot="content">账号登录</view>
   </cu-custom>
-  <view class="body">
+  <view class="body" style="height:100%">
     <form bindsubmit="formSubmit">
       <view class="cu-form-group margin-top">
         <view class="title">账号</view>

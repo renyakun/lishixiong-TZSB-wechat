@@ -46,7 +46,7 @@
   <view class="cu-bar bg-white solid-bottom margin-top">
     <view class="action">
       <text class="cuIcon-titles text-blue " style="color:#0081ff"></text>
-      <text class="text-xl text-bold">任务处理</text>
+      <text class="text-xl text-bold text-black">任务处理</text>
     </view>
   </view>
   <scroll-view scroll-x class="bg-white nav" scroll-with-animation scroll-left="{{scrollLeft}}">
