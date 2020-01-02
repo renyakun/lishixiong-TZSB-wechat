@@ -10,7 +10,6 @@
     "pages/reportList/checklist/checklist",
     "pages/reportList/newreport/newreport",
     "pages/reportList/newreport/info/info",
-    "pages/reportDetail/reportDetail",
     "pages/reportChange/reportChange",
     "pages/test/test",
     "pages/information/information",

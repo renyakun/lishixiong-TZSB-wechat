@@ -24,6 +24,8 @@ Page({
     checkflag: true, //shehe 加载动画标志
     approveflag: true, // shepi 加载动画标志
     todayflag: true,
+    nodataFlag: false, //无数据
+    nodataFlag1: false,
     scrollLeft: 0,
     pageNum: 1, //页码
     pageSize: 10, //数据数量
@@ -31,11 +33,11 @@ Page({
       "待审核",
       "待审批"
     ],
-    checkList:[],
+    checkList: [],
     reportList: [],
     ApproveList: [],
-    checkRequestFlag:true, //下拉加载更多请求标志,请求不到数据停止下拉加载
-    ApproveRequestFlag:true, //下拉加载更多请求标志,请求不到数据停止下拉加载
+    checkRequestFlag: true, //上拉加载更多请求标志,请求不到数据停止下拉加载
+    ApproveRequestFlag: true, //上拉加载更多请求标志,请求不到数据停止下拉加载
     ec: {
       lazyLoad: true
     }
@@ -69,30 +71,65 @@ Page({
     let pageNum = this.data.pageNum;
     let pageSize = this.data.pageSize;
     console.log(cookie);
-    wxRequest('GET', url + '/report/getWaitCheckList', {
-      pageNum: pageNum,
-      pageSize: pageSize
-    }, cookie, (res) => {
-      console.log(res.data.data)
-      if (res.data.ok) {
-        console.log(res.data.data.list.length);
-
-        if (res.data.data.list.length<1){
-          this.setData({
-            checkRequestFlag: false, //下拉请求标志
-          })
+    if (pageNum == 1) {
+      // 首次加载或者下拉刷新
+      wxRequest('GET', url + '/report/getWaitCheckList', {
+        pageNum: pageNum,
+        pageSize: pageSize
+      }, cookie, (res) => {
+        console.log(res.data.data)
+        if (res.data.ok) {
+          console.log(res.data.data.list.length);
+          if (res.data.data.list.length < 1) {
+            // 没有拿到数据
+            setTimeout(() => {
+              this.setData({
+                checkList: [...this.data.checkList, ...res.data.data.list],
+                checkRequestFlag: false, //上拉请求标志(停止上拉操作)
+                checkflag: false,
+                nodataFlag: true,
+              })
+            }, 1000)
+          }else{
+            setTimeout(() => {
+              this.setData({
+                checkList: [...this.data.checkList, ...res.data.data.list],
+                checkflag: false,
+              })
+            }, 1000)
+          }
         }
-        console.log("设置数据")
-        setTimeout(() => {
-          this.setData({
-            checkList: [...this.data.checkList, ...res.data.data.list],
-            checkflag: false
-          })
-        }, 1000)
-      }
-    }, (err) => {
-      console.log(err)
-    })
+      }, (err) => {
+        console.log(err)
+      })
+    } else {
+      // 加载更多
+      wxRequest('GET', url + '/report/getWaitCheckList', {
+        pageNum: pageNum,
+        pageSize: pageSize
+      }, cookie, (res) => {
+        console.log(res.data.data)
+        if (res.data.ok) {
+          console.log(res.data.data.list.length);
+          if (res.data.data.list.length < 1) {
+            // 没有拿到数据
+            this.setData({
+              checkRequestFlag: false, //上拉请求标志(停止上拉操作)
+            })
+          }
+          console.log("设置数据")
+          setTimeout(() => {
+            this.setData({
+              checkList: [...this.data.checkList, ...res.data.data.list],
+              checkflag: false,
+            })
+          }, 1000)
+        }
+      }, (err) => {
+        console.log(err)
+      })
+    }
+
   },
 
   // 待审批报告列表
@@ -101,29 +138,60 @@ Page({
     let pageNum = this.data.pageNum;
     let pageSize = this.data.pageSize;
     console.log(cookie);
-    wxRequest('GET', url + '/report/getWaitApproveList', {
-      pageNum: pageNum,
-      pageSize: pageSize
-    }, cookie, (res) => {
-      console.log(res.data.data)
-      if (res.data.ok) {
-        if(res.data.data.list.length<1){
-          this.setData({
-            ApproveRequestFlag:false,
-          })
+    if (pageNum == 1) {
+      wxRequest('GET', url + '/report/getWaitApproveList', {
+        pageNum: pageNum,
+        pageSize: pageSize
+      }, cookie, (res) => {
+        console.log(res.data.data)
+        if (res.data.ok) {
+          if (res.data.data.list.length < 1) {
+            setTimeout(() => {
+              this.setData({
+                ApproveList: [...this.data.ApproveList, ...res.data.data.list],
+                approveflag: false,
+                ApproveRequestFlag: false,
+                nodataFlag1: true
+              })
+            }, 1000)
+          }else{
+            setTimeout(() => {
+              this.setData({
+                ApproveList: [...this.data.ApproveList, ...res.data.data.list],
+                approveflag: false,
+              })
+            }, 1000)
+          }
         }
-        console.log("设置数据")
-        setTimeout(() => {
-          this.setData({
-            ApproveList: [...this.data.ApproveList, ...res.data.data.list],
-            approveflag: false
-          })
-        }, 1000)
+      }, (err) => {
+        console.log(err)
+      })
+    } else {
+      wxRequest('GET', url + '/report/getWaitApproveList', {
+        pageNum: pageNum,
+        pageSize: pageSize
+      }, cookie, (res) => {
+        console.log(res.data.data)
+        if (res.data.ok) {
+          if (res.data.data.list.length < 1) {
+            this.setData({
+              ApproveRequestFlag: false,
+            })
+          }
+          console.log("设置数据")
+          setTimeout(() => {
+            this.setData({
+              ApproveList: [...this.data.ApproveList, ...res.data.data.list],
+              approveflag: false,
+            })
+          }, 1000)
 
-      }
-    }, (err) => {
-      console.log(err)
-    })
+        }
+      }, (err) => {
+        console.log(err)
+      })
+    }
+
   },
 
   // 跳转到任务详情页
@@ -134,7 +202,7 @@ Page({
     console.log(reportNo);
     setTimeout(() => {
       wx.navigateTo({
-        url: '/pages/reportDetail/reportDetail?reportNo=' + reportNo + '&flag=' + flag,
+        url: '/pages/reportList/newreport/info/info?reportNo=' + reportNo + '&flag=' + flag,
       })
     }, 1000)
 
@@ -169,7 +237,14 @@ Page({
       approveflag: true,
       todayflag: true,
       pageNum: 1,
-      pageSize: 10
+      pageSize: 10,
+      checkList: [],
+      reportList: [],
+      ApproveList: [],
+      nodataFlag: false,
+      nodataFlag1: false,
+      checkRequestFlag: true, 
+      ApproveRequestFlag: true, 
     })
     this.getUserNotifyInfo();
     this.getWaitCheckList();
@@ -184,11 +259,11 @@ Page({
       pageNum: pageNum
     })
     if (this.data.TabCur == 0) {
-      if(this.data.checkRequestFlag){
+      if (this.data.checkRequestFlag) {
         this.getWaitCheckList();
       }
     } else {
-      if(this.data.ApproveRequestFlag){
+      if (this.data.ApproveRequestFlag) {
         this.getApproveList();
       }
     }

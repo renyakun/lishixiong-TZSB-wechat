@@ -54,7 +54,7 @@ Component({
       console.log(reportNo);
       setTimeout(() => {
         wx.navigateTo({
-          url: '/pages/reportDetail/reportDetail?reportNo=' + reportNo + '&flag=' + flag,
+          url: '/pages/reportList/newreport/info/info?reportNo=' + reportNo + '&flag=' + flag,
         })
       }, 1000)
     },

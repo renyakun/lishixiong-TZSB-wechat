@@ -14,7 +14,7 @@
 
     <!-- 加载动画 -->
     <view class="text-center" wx:if="{{todayflag}}">
-      <image src="/images/today.gif" mode="aspectFit" style="height:180rpx;" ></image>
+      <image src="/images/today.gif" mode="aspectFit" style="height:180rpx;"></image>
     </view>
     <block wx:else>
       <view class="cu-bar bgwhite border-botom padding-bottom">
@@ -87,6 +87,10 @@
       </view>
     </block>
 
+    <!-- 无数据 -->
+    <view class="bg-white" style="" wx:if="{{nodataFlag}}" style="height:800rpx;width:100%">
+      <image src="/images/nodata.jpg" mode="aspectFit" class="gif-white response"></image>
+    </view>
   </view>
 
   <!-- 待审批列表  ApproveList-->
@@ -123,6 +127,9 @@
 
 
     </block>
-
+    <!-- 无数据 -->
+    <view class="bg-white" style="" wx:if="{{nodataFlag1}}" style="height:800rpx;width:100%">
+      <image src="/images/nodata.jpg" mode="aspectFit" class="gif-white response"></image>
+    </view>
   </view>
 </view>

@@ -220,26 +220,31 @@ Page({
   commitChange() {
     let cookie = getApp().globalData.cookie;
     let pwd = utilMd5.hexMD5(this.data.comfirmPassword);
-    wxRequest('POST', url + '/report/user/updateUser', {
-      confirmPwd: pwd,
-      email: this.data.email,
-      phone: this.data.comfirmPwd,
-      signature: "",
-    }, cookie, (res) => {
-      console.log(res.data.data)
-      if (res.data.ok) {
-        console.log("修改成功")
-        setTimeout(() => {
-          showToast('修改成功','none',1000)
-        }, 1000)
-        // 清楚cookie?,直接跳转登录页
-        wx.navigateTo({
-          url: '/pages/login/login',
-        })
-      }
-    }, (err) => {
-      console.log(err)
+    checkModel('提示', '确认提交修改吗', () => {
+      wxRequest('POST', url + '/report/user/updateUser', {
+        confirmPwd: pwd,
+        email: this.data.email,
+        phone: this.data.comfirmPwd,
+        signature: "",
+      }, cookie, (res) => {
+        console.log(res.data.data)
+        if (res.data.ok) {
+          console.log("修改成功")
+          setTimeout(() => {
+            showToast('修改成功', 'none', 1000)
+          }, 1000)
+          // 清楚cookie?,直接跳转登录页
+          wx.navigateTo({
+            url: '/pages/login/login',
+          })
+        }
+      }, (err) => {
+        console.log(err)
+      })
+    }, () => {
+      // 取消
     })
+
   },
 
   /**
