@@ -41,12 +41,14 @@ Page({
   // 密码可见|不可见
   changeIsSee() {
     this.setData({
-      isSee: !this.data.isSee
+      isSee: !this.data.isSee,
+      password: this.data.password
     })
   },
   changeIsSee1() {
     this.setData({
-      isSee1: !this.data.isSee1
+      isSee1: !this.data.isSee1,
+      comfirmPassword: this.data.comfirmPassword
     })
   },
 

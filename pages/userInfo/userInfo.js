@@ -20,6 +20,7 @@ Page({
    */
   data: {
     getUserInfo:[],
+    demandflag:true
   },
   // 获取个人信息
   getUserInfo() {
@@ -34,6 +35,7 @@ Page({
         setTimeout(() => {
           this.setData({
             getUserInfo: res.data.data,
+            demandflag:false,
           })
         }, 1000)
       }

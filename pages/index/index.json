@@ -1,5 +1,7 @@
 {
   "usingComponents": {
+    "list-card": "../../my-component/list-card/list-card",
+    "i-load-more": "../../../colorui/dist/load-more/index"
   },
   "enablePullDownRefresh":true
 }

@@ -21,11 +21,13 @@ const cookie = getApp().globalData.cookie;
 Page({
   data: {
     TabCur: 0,
-    checkflag: true, //shehe 加载动画标志
-    approveflag: true, // shepi 加载动画标志
-    todayflag: true,
-    nodataFlag: false, //无数据
-    nodataFlag1: false,
+    checkflag: true, //审核 加载动画标志
+    approveflag: true, // 审批 加载动画标志
+    todayflag: true, //顶部加载动画
+    nodataFlag: false, //审核列表无数据
+    nodataFlag1: false, //审批列表无数据
+    loadflag:false,
+    loadflag1:false,
     scrollLeft: 0,
     pageNum: 1, //页码
     pageSize: 10, //数据数量
@@ -40,7 +42,8 @@ Page({
     ApproveRequestFlag: true, //上拉加载更多请求标志,请求不到数据停止下拉加载
     ec: {
       lazyLoad: true
-    }
+    },
+    tiptxt: '到底了',
   },
 
   // 获取今日报告数量
@@ -71,53 +74,32 @@ Page({
     let pageNum = this.data.pageNum;
     let pageSize = this.data.pageSize;
     console.log(cookie);
-    if (pageNum == 1) {
-      // 首次加载或者下拉刷新
-      wxRequest('GET', url + '/report/getWaitCheckList', {
-        pageNum: pageNum,
-        pageSize: pageSize
-      }, cookie, (res) => {
-        console.log(res.data.data)
-        if (res.data.ok) {
-          console.log(res.data.data.list.length);
-          if (res.data.data.list.length < 1) {
-            // 没有拿到数据
-            setTimeout(() => {
-              this.setData({
-                checkList: [...this.data.checkList, ...res.data.data.list],
-                checkRequestFlag: false, //上拉请求标志(停止上拉操作)
-                checkflag: false,
-                nodataFlag: true,
-              })
-            }, 1000)
-          }else{
-            setTimeout(() => {
-              this.setData({
-                checkList: [...this.data.checkList, ...res.data.data.list],
-                checkflag: false,
-              })
-            }, 1000)
-          }
-        }
-      }, (err) => {
-        console.log(err)
-      })
-    } else {
-      // 加载更多
-      wxRequest('GET', url + '/report/getWaitCheckList', {
-        pageNum: pageNum,
-        pageSize: pageSize
-      }, cookie, (res) => {
-        console.log(res.data.data)
-        if (res.data.ok) {
-          console.log(res.data.data.list.length);
-          if (res.data.data.list.length < 1) {
-            // 没有拿到数据
+    // 首次加载或者下拉刷新
+    wxRequest('GET', url + '/report/getWaitCheckList', {
+      pageNum: pageNum,
+      pageSize: pageSize
+    }, cookie, (res) => {
+      console.log(res.data.data)
+      if (res.data.ok) {
+        console.log(res.data.data.list.length);
+        if (res.data.data.list.length < 1) {
+          // 没有拿到数据
+          if (pageNum <= 1) {
+            // 首次加载或者下拉刷新没有数据
             this.setData({
+              checkflag: false, //加载动画
+              nodataFlag: true,
+              checkRequestFlag: false,
+            })
+          } else {
+            // 上拉加载更多没有数据
+            this.setData({
+              loadflag: true,
               checkRequestFlag: false, //上拉请求标志(停止上拉操作)
             })
           }
-          console.log("设置数据")
+        }else{
+          // 有数据
           setTimeout(() => {
             this.setData({
               checkList: [...this.data.checkList, ...res.data.data.list],
@@ -125,11 +107,10 @@ Page({
             })
           }, 1000)
         }
-      }, (err) => {
-        console.log(err)
-      })
-    }
-
+      }
+    }, (err) => {
+      console.log(err)
+    })
   },
 
   // 待审批报告列表
@@ -138,59 +119,45 @@ Page({
     let pageNum = this.data.pageNum;
     let pageSize = this.data.pageSize;
     console.log(cookie);
-    if (pageNum == 1) {
-      wxRequest('GET', url + '/report/getWaitApproveList', {
-        pageNum: pageNum,
-        pageSize: pageSize
-      }, cookie, (res) => {
-        console.log(res.data.data)
-        if (res.data.ok) {
-          if (res.data.data.list.length < 1) {
+    wxRequest('GET', url + '/report/getWaitApproveList', {
+      pageNum: pageNum,
+      pageSize: pageSize
+    }, cookie, (res) => {
+      console.log(res.data.data)
+      if (res.data.ok) {
+        if (res.data.data.list.length < 1) {
+          if (pageNum <= 1) {
+            // 首次加载或者下拉刷新没有数据,显示nodata,停止动画
             setTimeout(() => {
               this.setData({
-                ApproveList: [...this.data.ApproveList, ...res.data.data.list],
                 approveflag: false,
-                ApproveRequestFlag: false,
+                // ApproveRequestFlag: false,
                 nodataFlag1: true
               })
             }, 1000)
-          }else{
+          } else {
+            // 加载更多没有数据显示底部样式栏
             setTimeout(() => {
               this.setData({
-                ApproveList: [...this.data.ApproveList, ...res.data.data.list],
-                approveflag: false,
+                loadflag1:true,
+                ApproveRequestFlag: false,
               })
             }, 1000)
           }
-        }
-      }, (err) => {
-        console.log(err)
-      })
-    } else {
-      wxRequest('GET', url + '/report/getWaitApproveList', {
-        pageNum: pageNum,
-        pageSize: pageSize
-      }, cookie, (res) => {
-        console.log(res.data.data)
-        if (res.data.ok) {
-          if (res.data.data.list.length < 1) {
-            this.setData({
-              ApproveRequestFlag: false,
-            })
-          }
-          console.log("设置数据")
+
+        } else {
           setTimeout(() => {
             this.setData({
               ApproveList: [...this.data.ApproveList, ...res.data.data.list],
               approveflag: false,
             })
           }, 1000)
-
         }
-      }, (err) => {
-        console.log(err)
-      })
-    }
+      }
+    }, (err) => {
+      console.log(err)
+    })
+
 
   },
 
@@ -210,17 +177,26 @@ Page({
 
   // tab栏切换
   tabSelect(e) {
+    // 刷新页面,初始化tab栏数据
     this.setData({
       TabCur: e.currentTarget.dataset.id,
-      scrollLeft: (e.currentTarget.dataset.id - 1) * 60
+      scrollLeft: (e.currentTarget.dataset.id - 1) * 60,
+      pageNum:1,
+      checkflag: true, 
+      approveflag: true, 
+      nodataFlag: false, 
+      nodataFlag1: false, 
+      loadflag: false,
+      loadflag1: false,
+      checkList: [],
+      ApproveList: [],
+      checkRequestFlag: true, 
+      ApproveRequestFlag: true, 
     })
+    this.getWaitCheckList();
+    this.getApproveList();
   },
 
-  // 初始化饼图
-  // echartInit(e) {
-  //   let that = this;
-  //   initChart(e.detail.canvas, e.detail.width, e.detail.height, that);
-  // },
 
   onLoad: function() {
     this.getUserNotifyInfo();
@@ -233,18 +209,23 @@ Page({
     wx.stopPullDownRefresh();
     // 初始化数据
     this.setData({
-      checkflag: true,
-      approveflag: true,
       todayflag: true,
+      checkflag: true,
+      loadflag: false,
+      loadflag1: false,
       pageNum: 1,
-      pageSize: 10,
       checkList: [],
-      reportList: [],
-      ApproveList: [],
       nodataFlag: false,
       nodataFlag1: false,
-      checkRequestFlag: true, 
-      ApproveRequestFlag: true, 
+
+      approveflag: true,
+      // pageSize: 10 ,
+      reportList: [],
+      ApproveList: [],
+
+      nodataFlag1: false,
+      checkRequestFlag: true,
+      ApproveRequestFlag: true,
     })
     this.getUserNotifyInfo();
     this.getWaitCheckList();
@@ -256,7 +237,7 @@ Page({
     console.log("123");
     let pageNum = this.data.pageNum + 1;
     this.setData({
-      pageNum: pageNum
+      pageNum: pageNum,
     })
     if (this.data.TabCur == 0) {
       if (this.data.checkRequestFlag) {

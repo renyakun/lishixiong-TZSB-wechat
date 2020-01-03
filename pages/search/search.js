@@ -25,7 +25,7 @@ Page({
       if (res.data.ok) {
         if(res.data.data.list.length<1){
           if (this.data.pageNum == '1'){
-            // 首次加载没有数据 show nodata
+            // 首次加载没有数据||下拉刷新 show nodata
             this.setData({
               nodataFlag: true
             })
@@ -329,7 +329,8 @@ Page({
       list: [],
       name: '', //筛选名称 
       status: '', //状态筛选
-      loadflag: false
+      loadflag: false,
+      nodataFlag:false
     })
     this.getList();
     this.getPreUser();

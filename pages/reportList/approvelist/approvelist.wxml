@@ -5,43 +5,53 @@
   <view slot="content">审批报告列表</view>
 </cu-custom>
 
-<view class="approveReportList">
-
-  <block wx:for="{{approveReportList}}" wx:key="reportNo">
-    <view class="margin-xs cu-card radius">
-      <!-- title -->
-      <view class="cu-bar bg-white solid-bottom">
-        <view class='action flex justify-between' style="width:100%">
-          <view>
-            <text class="text-lg text-bold text-black">报告编号:{{item.reportNo}}</text>
-          </view>
-          <view wx:if="{{item.modifyFlag==4}}">
-            <text class="cu-tag radius bg-green">审批通过</text>
-          </view>
-          <view wx:if="{{item.modifyFlag==14}}">
-            <text class="cu-tag radius bg-red">审批不通过</text>
+<view class="approveReportList scrollPage">
+  <view class="text-center bg-white" wx:if="{{demandflag}}">
+    <image src="/images/today.gif" mode="aspectFit" style="height:100vh;"></image>
+  </view>
+  <block wx:else>
+    <block wx:if="{{dataflag}}">
+      <view class="margin-xs cu-card radius" wx:for="{{approveReportList}}" wx:key="reportNo">
+        <!-- title -->
+        <view class="cu-bar bg-white solid-bottom">
+          <view class='action flex justify-between' style="width:100%">
+            <view>
+              <text class="text-lg text-bold text-black">报告编号:{{item.reportNo}}</text>
+            </view>
+            <view wx:if="{{item.modifyFlag==4}}">
+              <text class="cu-tag radius bg-green">审批通过</text>
+            </view>
+            <view wx:if="{{item.modifyFlag==14}}">
+              <text class="cu-tag radius bg-red">审批不通过</text>
+            </view>
           </view>
         </view>
-      </view>
-      <!-- content -->
-      <view class="cu-card case no-card" style="padding:0 30rpx;background-color:white;" bindtap="">
-        <view class="cu-item shadow">
-          <view class="cu-list">
-            <view class="cu-item text-df text-bold" style="border-top: 1rpx solid #eee;positon:relative">
-              <view class="margin">
-                <text class="cuIcon-profile text-blue"></text> 审批人: {{item.approveName}}</view>
-              <view class="margin">
-                <text class="cuIcon-time text-blue"></text> 审批时间: {{item.approveTime}}</view>
-              <view class="margin text-sm text-center flex " style="flex-direction:row-reverse" bindtap="">
-                <text class="my-btn" style="" catchtap="newReportInfo" wx:if="{{item.modifyFlag==4}}" data-flag="{{item.modifyFlag}}" data-reportno="{{item.reportNo}}">提交归档</text>
-                <text class="my-btn" style="" catchtap="changeReport" wx:if="{{item.modifyFlag==14}}" data-flag="{{item.modifyFlag}}" data-reportno="{{item.reportNo}}">修改报告</text>
+        <!-- content -->
+        <view class="cu-card case no-card" style="padding:0 30rpx;background-color:white;" bindtap="">
+          <view class="cu-item shadow">
+            <view class="cu-list">
+              <view class="cu-item text-df text-bold" style="border-top: 1rpx solid #eee;positon:relative">
+                <view class="margin">
+                  <text class="cuIcon-profile text-blue"></text> 审批人: {{item.approveName}}</view>
+                <view class="margin">
+                  <text class="cuIcon-time text-blue"></text> 审批时间: {{item.approveTime}}</view>
+                <view class="margin text-sm text-center flex " style="flex-direction:row-reverse" bindtap="">
+                  <text class="my-btn" style="" catchtap="newReportInfo" wx:if="{{item.modifyFlag==4}}" data-flag="{{item.modifyFlag}}" data-reportno="{{item.reportNo}}">提交归档</text>
+                  <text class="my-btn" style="" catchtap="changeReport" wx:if="{{item.modifyFlag==14}}" data-flag="{{item.modifyFlag}}" data-reportno="{{item.reportNo}}">修改报告</text>
+                </view>
+                <!-- <text class="arrow text-xl cuIcon-right"></text> -->
               </view>
-              <!-- <text class="arrow text-xl cuIcon-right"></text> -->
             </view>
           </view>
         </view>
       </view>
+    </block>
+    <view class="padding-top-xl bgwhite flex justify-center" wx:else style="width:100%;height:100vh">
+      <image src="/images/no-data.jpg" mode="aspectFit"></image>
+    </view>
+
+    <view class="margin-top-xl" style="display:{{loadplay?'':'none'}}">
+      <i-load-more tip="{{tiptxt}}" loading="{{ false }}" />
     </view>
   </block>
 </view>
-

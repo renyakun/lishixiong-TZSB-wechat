@@ -1,20 +1,20 @@
 <!--pages/setting/setting.wxml-->
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
   <view slot="backText">返回</view>
-  <view slot="content">我的信息</view>
+  <view slot="content">安全设置</view>
 </cu-custom>
 <view class="scrollPage margin">
   <form class="margin" style="width:100vh;height:100vw" bindsubmit="formSubmit">
     <view class="cu-form-group margin-top">
       <view class="title text-bold {{pwdCheckFlag?'':'text-red'}}">账户密码</view>
-      <input type="{{isSee?'text':'password'}}" name="pwd" bindblur="checkPassword" bindinput="getPassword" maxlength='20' value="" placeholder="请输入密码"></input>
+      <input type="{{isSee?'text':'password'}}" name="pwd" bindblur="checkPassword" bindinput="getPassword" maxlength='20' value="{{password}}" placeholder="请输入密码"></input>
       <text class="{{pwdCheckFlag?'':'cuIcon-warnfill'}} text-red"></text>
       <text class="{{pwdCheckFlag1?'cuIcon-roundcheck':''}} text-green"></text>
       <text class="{{isSee?'cuIcon-attention':'cuIcon-attentionforbidfill'}} text-grey" bindtap="changeIsSee"></text>
     </view>
     <view class="cu-form-group">
       <view class="text-bold title {{pwdComfirmFlag?'':'text-red'}}">确认密码</view>
-      <input type="{{isSee1?'text':'password'}}" name="comfirmPwd" bindblur="comfirmPassword" bindinput="getComfirmPassword" maxlength='20' value="" placeholder="请输入密码"></input>
+      <input type="{{isSee1?'text':'password'}}" name="comfirmPwd" bindblur="comfirmPassword" bindinput="getComfirmPassword" maxlength='20' value="{{comfirmPassword}}" placeholder="请输入密码"></input>
       <block>
         <text class="{{pwdComfirmFlag?'':'cuIcon-warnfill'}}  text-red"></text>
         <text class="{{pwdComfirmFlag1?'cuIcon-roundcheck':''}}  text-green"></text>

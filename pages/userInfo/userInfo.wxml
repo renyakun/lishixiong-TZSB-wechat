@@ -14,8 +14,13 @@
       <text class="text-xl text-bold">我的信息</text>
     </view>
   </view>
+
+  <view class="text-center bg-white" wx:if="{{demandflag}}">
+    <image src="/images/today.gif" mode="aspectFit" style="height:100vh;"></image>
+  </view>
+
   <!-- 个人信息 -->
-  <view style="" class="cu-list menu margin {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+  <view style="" class="cu-list menu margin {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}" wx:else>
     <view class="cu-item {{menuArrow?'arrow':''}}">
       <view class="content">
         <text class="text-black">电子签名:</text>

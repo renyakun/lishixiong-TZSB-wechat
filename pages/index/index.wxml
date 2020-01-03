@@ -19,9 +19,6 @@
     <block wx:else>
       <view class="cu-bar bgwhite border-botom padding-bottom">
         <view class="action flex flex-direction" style="width:100%">
-          <!-- <view>
-            <image src="../../images/arc.png"></image>
-          </view> -->
           <view class="canvans-wrap">
             <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
           </view>
@@ -62,74 +59,42 @@
     <view class="bg-white" style="" wx:if="{{checkflag}}" style="height:800rpx;width:100%">
       <image src="/images/rhomb-white.gif" mode="aspectFit" class="gif-white response"></image>
     </view>
-
     <block wx:else>
-      <view class="cu-list menu-avatar">
-        <view class="solid-left radius shadow margin cu-item" wx:for="{{checkList}}" wx:key="id" style="border-top:1rpx solid white" bindtap="toReportInfo" data-reportNo="{{item.reportNo}}" data-flag="{{item.flag}}">
-          <view class="content flex flex-direction justify-around" style="padding:30rpx">
-            <view class="text-black text-df">
-              <text class="cuIcon-time text-red"></text>
-              <text class="margin-left">{{item.createTime}}</text>
-            </view>
-            <view class="text-black text-df">
-              <text class="cuIcon-form text-red"></text>
-              <text class="margin-left"> {{item.reportNo}}</text>
-            </view>
-          </view>
-          <view class="action flex flex-direction">
-            <view class="text-blue text-sm ">待审核
-              <text class="cuIcon-title text-blue"></text>
-            </view>
-            <view class="text-black text-sm ">提交人:{{item.preUser}}</view>
-            <!-- <view class="cu-tag round bg-grey sm">5</view> -->
-          </view>
-        </view>
+      <view class="bg-white" style="" wx:if="{{nodataFlag}}" style="height:800rpx;width:100%">
+        <image src="/images/nodata.jpg" mode="aspectFit" class="gif-white response"></image>
       </view>
+      <block wx:else>
+        <list-card wx:for="{{checkList}}" wx:key="id" class="margin-top" now-name="{{item.flag}}" reportNo="{{item.reportNo}}" createTime="{{item.createTime}}" preUser="{{item.preUser}}" flag="{{item.flag}}"></list-card>
+      </block>
+      <!-- 无数据 -->
     </block>
-
-    <!-- 无数据 -->
-    <view class="bg-white" style="" wx:if="{{nodataFlag}}" style="height:800rpx;width:100%">
-      <image src="/images/nodata.jpg" mode="aspectFit" class="gif-white response"></image>
+    <view class="margin-top-xl" wx:if="{{loadflag}}">
+      <i-load-more tip="{{tiptxt}}" loading="{{ false }}" />
     </view>
+
   </view>
 
   <!-- 待审批列表  ApproveList-->
   <view wx:else>
-
-
     <!-- 加载动画 -->
     <view class="bg-white" style="" wx:if="{{approveflag}}" style="height:800rpx;width:100%">
       <image src="/images/rhomb-white.gif" mode="aspectFit" class="gif-white response"></image>
     </view>
 
     <block wx:else>
-      <view class="cu-list menu-avatar">
-        <view class="solid-left radius shadow margin cu-item" wx:for="{{ApproveList}}" wx:key="id" style="border-top:1rpx solid white" bindtap="toReportInfo" data-reportNo="{{item.reportNo}}" data-flag="{{item.flag}}">
-          <view class="content flex flex-direction justify-around" style="padding:30rpx">
-            <view class="text-black text-df">
-              <text class="cuIcon-time text-red"></text>
-              <text class="margin-left">{{item.createTime}}</text>
-            </view>
-            <view class="text-black text-df">
-              <text class="cuIcon-form text-red"></text>
-              <text class="margin-left"> {{item.reportNo}}</text>
-            </view>
-          </view>
-          <view class="action flex flex-direction" style="">
-            <view class="text-blue text-sm ">待审批
-              <text class="cuIcon-title text-blue"></text>
-            </view>
-            <view class="text-black text-sm ">提交人:{{item.preUser}}</view>
-            <!-- <view class="cu-tag round bg-grey sm">5</view> -->
-          </view>
-        </view>
+      <!-- 无数据 -->
+      <view class="bg-white" style="" wx:if="{{nodataFlag1}}" style="height:800rpx;width:100%">
+        <image src="/images/nodata.jpg" mode="aspectFit" class="gif-white response"></image>
       </view>
-
+      <block wx:else>
+        <list-card wx:for="{{ApproveList}}" wx:key="id" class="margin-top" now-name="{{item.flag}}" reportNo="{{item.reportNo}}" createTime="{{item.createTime}}" preUser="{{item.preUser}}" flag="{{item.flag}}"></list-card>
+      </block>
 
     </block>
-    <!-- 无数据 -->
-    <view class="bg-white" style="" wx:if="{{nodataFlag1}}" style="height:800rpx;width:100%">
-      <image src="/images/nodata.jpg" mode="aspectFit" class="gif-white response"></image>
+    <!-- 底部样式 -->
+    <view class="margin-top-xl" wx:if="{{loadflag1}}">
+      <i-load-more tip="{{tiptxt}}" loading="{{ false }}" />
     </view>
   </view>
+
 </view>
