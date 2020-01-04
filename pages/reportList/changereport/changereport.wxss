@@ -1,0 +1,54 @@
+/* pages/reportList/changereport/changereport.wxss */
+
+.nav-list {
+  width: 100%;
+  padding: 0;
+  height: 100%;
+  /* position: absolute;
+  left: 0;
+  top: 0; */
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  border-top: 1rpx solid #ccc;
+  font-weight: 700;
+}
+
+.item-wrap{
+  margin: 10rpx 0;
+}
+
+
+.cu-btn {
+  background-image: var(--gradualBlue);
+  color: #fff;
+}
+
+.text-normal{
+  font-weight:normal;
+  margin-left: 10rpx;
+  color: 	#7D7D7D;
+}
+
+
+.input-wrap{
+  width: 100%;
+  /* border:1rpx solid #ccc; */
+}
+.reson{
+  height: 100rpx;
+}
+
+
+.cu-form-group picker .picker{
+  text-align: left;
+}
+
+.cu-form-group{
+  background-color: var(--greyLight);
+}

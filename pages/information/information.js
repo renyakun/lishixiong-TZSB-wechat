@@ -37,6 +37,13 @@ Page({
       complete: function(res) {},
     })
   },
+
+  companyInfo(){
+    showToast("暂未开放,敬请期待",'none',1000)
+  },
+  userList(){
+    showToast("暂未开放,敬请期待", 'none', 1000)
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -127,6 +127,9 @@ Page({
   changeReport(e) {
     let flag = e.currentTarget.dataset.flag;
     let reportNo = e.currentTarget.dataset.reportno; //自定义属性名字只能小写
+    wx.navigateTo({
+      url: '/pages/reportList/changereport/changereport?flag=' + flag + '&reportNo=' + reportNo,
+    })
     console.log("修改报告");
     showToast("推荐去pc端修改", 'none', 1000)
   },

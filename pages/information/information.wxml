@@ -4,21 +4,24 @@
 </cu-custom>
 
 <view class="scrollPage" style="background-color:white">
-  <view class=" padding-top-xl padding-bottom-sm" style="height:40vh">
-    <view class="flex justify-center margin-bottom-sm" style="height:100%;position:relative">
-      <view class='text-center flex flex-direction align-center' style="flex:1;justify-content:center">
-        <view class="" style="height:10vh;line-height:10vh;flex:1;">
-          <view class="text-xxl text-white padding-top">{{'admin'}}</view>
-        </view>
-      </view>
+  <!-- 头部背景 -->
+  <view class="" style="height:40vh;position:relative">
+    <image class="bgc-image" src="../../images/bgcblue.jpg" style="width:100%;height:100%" mode=""></image>
+    <view class="des-wrap">
+      <text class="text-white">个人信息管理</text>
     </view>
   </view>
-  <view class="flex padding">
-    <view class="margin my-card shadow" style="flex:1;" bindtap="userInfo">个人信息</view>
-    <view class="margin my-card shadow" style="flex:1" bindtap="changeUserInfo">安全设置</view>
+
+  <!-- 底部框 -->
+  <view class="footer" style="width:100%">
+    <view class="flex ">
+      <view class="margin my-card shadow" style="flex:1;" bindtap="userInfo">个人信息</view>
+      <view class="margin my-card shadow" style="flex:1" bindtap="changeUserInfo">安全设置</view>
+    </view>
+    <view class="flex ">
+      <view class="margin my-card shadow" style="flex:1" bindtap="companyInfo">公司信息</view>
+      <view class="margin my-card shadow" style="flex:1" bindtap="userList">用户列表</view>
+    </view>
   </view>
-  <view class="flex padding">
-    <view class="margin my-card shadow" style="flex:1">公司信息</view>
-    <view class="margin my-card shadow" style="flex:1">用户列表</view>
-  </view>
+
 </view>

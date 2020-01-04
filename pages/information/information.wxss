@@ -2,9 +2,9 @@
 
 .my-card {
   border: 1rpx solid var(--greyLight);
-  width: 30vh;
-  height: 15vh;
-  line-height: 15vh;
+  width: 15vh;
+  height: 17vh;
+  line-height: 17vh;
   text-align: center;
   background-color: white;
 }
@@ -21,4 +21,23 @@
   top: 0;
   left: 50%;
   margin-left: -50vw;
+}
+
+.footer{
+  position: absolute;
+  top: 50vh;
+  left: 0;
+  padding: 0 80rpx;
+}
+
+.bgc-image{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.des-wrap{
+  position: absolute;
+  top: 35%;
+  left: 10%;
+  font-size: 40rpx;
 }

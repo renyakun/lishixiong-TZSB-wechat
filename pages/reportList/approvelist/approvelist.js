@@ -127,12 +127,12 @@ Page({
     // console.log(e.currentTarget.dataset.reportno);
     console.log("修改报告");
     showToast("推荐去pc端修改", 'none', 1000)
-    // wx.navigateTo({
-    //   url: '/pages/reportChange/reportChange?flag=' + flag + '&reportNo=' + reportNo,
-    //   success: function (res) { },
-    //   fail: function (res) { },
-    //   complete: function (res) { },
-    // })
+    wx.navigateTo({
+      url: '/pages/reportList/changereport/changereport?flag=' + flag + '&reportNo=' + reportNo,
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
   },
   /**
    * 生命周期函数--监听页面加载

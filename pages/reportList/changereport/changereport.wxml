@@ -1,0 +1,170 @@
+<!--pages/reportList/changereport/changereport.wxml-->
+<!--pages/reportList/newreport/info/info.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">我的报告</view>
+</cu-custom>
+<view class="text-center" wx:if="{{todayflag}}" style="background-color:white">
+  <image src="/images/today.gif" mode="aspectFit" style="height:100vh;width:100%"></image>
+</view>
+<block wx:else>
+  <view class="scrollPage" style="position:relative;height:100%">
+    <view class='nav-list'>
+      <view class="cu-card article" style="width:100%">
+        <view class="cu-item shadow">
+          <view class="title">
+            <view class="text-cut">
+              <view>修改报告</view>
+              <view class="text-red">
+                驳回原因:
+                <text class="text-red" wx:if="{{flag==14}}">{{commiterInfo.approveReason?commiterInfo.approveReason:''}}</text>
+                <text class="text-red" wx:else>{{commiterInfo.checkReason?commiterInfo.checkReason:''}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="content">
+            <view class="item margin padding-top">
+              <view class="item-wrap"> 报告编号:
+                <input class="text-normal" value="{{reportDetail.reportNo}}"></input>
+              </view>
+              <view class="item-wrap"> 使用单位:
+                <input class="text-normal" value="{{reportDetail.reportNo}}"></input>
+              </view>
+              <view class="item-wrap"> 单位地址:
+                <input class="text-normal" value="{{reportDetail.companyAddress}}"></input>
+              </view>
+              <view class="item-wrap"> 联系人:
+                <input class="text-normal" value="{{reportDetail.companyContacts}}"></input>
+              </view>
+              <view class="item-wrap"> 联系电话:
+                <input class="text-normal" value="{{reportDetail.telephone}}"></input>
+              </view>
+            </view>
+            <view class="item margin padding-top">
+              <view class="item-wrap"> 设备代码:
+                <input class="text-normal" value="{{reportDetail.deviceNo}}"></input>
+              </view>
+              <view class="item-wrap"> 安装位置:
+                <input class="text-normal" value="{{reportDetail.installLocation}}"></input>
+              </view>
+              <view class="item-wrap"> 安全阀类型:
+                <input class="text-normal" value="{{reportDetail.valveType}}"></input>
+              </view>
+              <view class="item-wrap"> 安全阀型号:
+                <input class="text-normal" value="{{reportDetail.valveModel}}"></input>
+              </view>
+
+              <view class="item-wrap"> 工作压力:
+                <input class="text-normal" value="{{reportDetail.workPressure}}"></input>
+              </view>
+              <view class="item-wrap"> 工作介质:
+                <input class="text-normal" value="{{reportDetail.workMedium}}"></input>
+              </view>
+              <view class="item-wrap"> 要求整定压力:
+                <input class="text-normal" value="{{reportDetail.requireSettingPressure}}"></input>
+              </view>
+              <view class="item-wrap"> 执行标准:
+                <input class="text-normal" value="{{reportDetail.standard}}"></input>
+              </view>
+
+              <view class="item-wrap"> 检验方式:
+                <input class="text-normal" value="{{reportDetail.checkMode}}"></input>
+              </view>
+              <view class="item-wrap"> 检验介质:
+                <input class="text-normal" value="{{reportDetail.checkMedium}}"></input>
+              </view>
+              <view class="item-wrap"> 整定压力:
+                <input class="text-normal" value="{{reportDetail.settingPressure}}"></input>
+              </view>
+              <view class="item-wrap"> 密封试验压力:
+                <input class="text-normal" value="{{reportDetail.sealTestPressure}}"></input>
+              </view>
+              <view class="item-wrap"> 检验结果:
+                <input class="text-normal" value="{{reportDetail.checkResult}}"></input>
+              </view>
+            </view>
+            <view class="item margin padding-top">
+              <view class="item-wrap"> 备注:
+                <input class="text-normal" value="{{reportDetail.remarks?reportDetail.remarks:'无'}}"></input>
+              </view>
+              <view class="item-wrap"> 维护检修情况说明:
+                <input class="text-normal" value="{{reportDetail.checkExplain?reportDetail.checkExplain:'无'}}"></input>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='nav-list' wx:if="{{flag!='99'}}">
+      <view class="cu-card article" style="width:100%">
+        <view class="cu-item shadow">
+          <view class="title">
+            <view class="text-cut">流程进度</view>
+          </view>
+          <view class="content">
+
+            <!-- 进度条区域 -->
+            <view class="bg-white padding">
+              <view class="cu-steps">
+                <view class="cu-item {{index>basics?'':'text-blue'}}" wx:for="{{basicsList}}" wx:key>
+                  <text class="cuIcon-{{item.icon}} {{index==2?'text-red':''}}"></text> {{item.name}}
+                  <!--  -->
+                  <text style="display:block" wx:if="{{index<basics}}">
+                   <block wx:if="{{index==0}}">{{commiterInfo.createName}}</block>
+                   <block wx:if="{{index==1}}">{{commiterInfo.checkName}}</block>
+                   <block wx:if="{{index==2}}">{{commiterInfo.approveName}}</block>
+                   <block wx:if="{{index==3}}">{{commiterInfo.fileName}}</block>
+                </text>
+                  <text wx:if="{{index<basics}}">
+                  <block wx:if="{{index==0}}">{{commiterInfo.createTime}}</block>
+                  <block wx:if="{{index==1}}">{{commiterInfo.checkTime}}</block>        
+                  <block wx:if="{{index==2}}">{{commiterInfo.approveTime}}</block>        
+                  <block wx:if="{{index==3}}">{{commiterInfo.fileTime}}</block>        
+                </text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 待审核,待审批底部样式 -->
+    <view class="btn-wrap flex justify-between margin-bottom" style="width:100%" wx:if="{{flag=='1'||flag=='3'}}">
+      <button class="cu-btn   shadow " style="width:60%" bindtap="pass">通过</button>
+      <button class="cu-btn   shadow " style="width:30%" bindtap="refuse">驳回</button>
+    </view>
+    <!-- 报告管理系列底部样式 -->
+    <view class="btn-wrap flex align-center justify-between margin-bottom" style="width:100%" wx:if="{{flag!=5&&flag!='1'&&flag!='3'&&flag!='99'}}">
+      <view class="cu-form-group margin-left" style="width:60%">
+        <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}" wx:if="{{flag==0}}">
+          <view class="picker">
+            {{index?picker[index]:'选择审核人'}}
+          </view>
+        </picker>
+        <picker bindchange="PickerChange1" value="{{index}}" range="{{picker1}}" wx:if="{{flag==2}}">
+          <view class="picker1">
+            {{index?picker1[index]:'选择审批人'}}
+          </view>
+        </picker>
+        <!-- <picker bindchange="PickerChange1" value="{{index}}" range="{{picker1}}" wx:if="{{flag==4}}">
+        <view class="picker1">
+          {{index?picker1[index]:'选择归档人'}}
+        </view>
+      </picker> -->
+        <view wx:if="{{flag==4}}">提交归档</view>
+      </view>
+      <button class="cu-btn   shadow " style="width:30%" bindtap="commit" data-checkman="{{checkman}}" data-flag="{{flag}}">提交</button>
+    </view>
+  </view>
+</block>
+
+<!-- 通过驳回模态框 -->
+<view class="contain">
+  <input-modal id="popup" cancelText="取消" confirmText="确认" title="温馨提示" bind:cancelEvent="popupCancel" bind:confirmEvent="popupConfirm">
+    <view slot="content" style=''>
+      <view class="input-wrap">
+        <input class="reson" type="text" placeholder="请输入驳回理由(必填)" bindinput="refusereason"></input>
+      </view>
+    </view>
+  </input-modal>
+</view>

@@ -14,7 +14,8 @@
     "pages/test/test",
     "pages/information/information",
     "pages/userInfo/userInfo",
-    "pages/setting/setting"
+    "pages/setting/setting",
+    "pages/reportList/changereport/changereport"
   ],
   "window": {
     "navigationBarBackgroundColor": "#39b54a",

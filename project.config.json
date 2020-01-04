@@ -160,6 +160,12 @@
 					"pathName": "pages/setting/setting",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "修改报告",
+					"pathName": "pages/reportList/changereport/changereport",
+					"scene": null
 				}
 			]
 		}
